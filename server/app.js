@@ -22,6 +22,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // app.use(express.static(publicDirPath));
 
-// app.use("/api", userRouter);
+app.use("/api", userRouter);
 // app.use("/api", accountRouter);
 export { app };
