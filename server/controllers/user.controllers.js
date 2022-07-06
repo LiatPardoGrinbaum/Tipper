@@ -48,3 +48,43 @@ export const getAllUsers = async (req, res) => {
     res.status(400).send();
   }
 };
+
+//update my user account
+//patch only update partial data sent by the client, now i want it to change only name and later- picture
+// can I use put instead with the same code?
+export const updateUser = async (req, res) => {
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ["name"];
+  const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
+
+  if (!isValidOperation) {
+    return res.status(400).send({ error: "Invalid updates!" });
+  }
+
+  try {
+    updates.forEach((update) => (req.user[update] = req.body[update]));
+    await req.user.save();
+    res.send(req.user);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+};
+
+//delete my user account
+export const deleteUser = async (req, res) => {
+  try {
+    await req.user.remove();
+    res.send(req.user);
+  } catch (e) {
+    res.status(500).send();
+  }
+};
+
+//get my profile details (get my user after I logged in)
+export const getMyProfile = async (req, res) => {
+  try {
+    res.send(req.user);
+  } catch (error) {
+    res.status(400).send();
+  }
+};
