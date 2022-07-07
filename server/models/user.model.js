@@ -38,6 +38,14 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
+//connection between user and posts
+//virtual means we're not really changing what we store in the user document
+userSchema.virtual("userPosts", {
+  ref: "posts",
+  localField: "_id", //user's id
+  foreignField: "owner",
+});
+
 //generate new token to new user \ logged in user
 userSchema.methods.generateAuthToken = async function () {
   const user = this;

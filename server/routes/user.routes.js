@@ -1,5 +1,6 @@
 import express from "express";
 const userRouter = express.Router();
+import auth from "../middlewere/auth.js";
 
 import {
   register,
@@ -10,7 +11,6 @@ import {
   deleteUser,
   getMyProfile,
 } from "../controllers/user.controllers.js";
-import auth from "../middlewere/auth.js";
 
 userRouter.post("/users/register", register);
 userRouter.get("/users", getAllUsers);

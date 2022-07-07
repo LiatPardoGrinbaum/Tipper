@@ -20,8 +20,8 @@ export const login = async (req, res) => {
     const user = await User.findByCredentials(req.body.email, req.body.password);
     const token = await user.generateAuthToken();
     res.send({ user, token });
-  } catch (e) {
-    res.status(400).send(e.message);
+  } catch (error) {
+    res.status(400).send(error.message);
   }
 };
 
@@ -34,8 +34,8 @@ export const logout = async (req, res) => {
 
     await req.user.save();
     res.send();
-  } catch (e) {
-    res.status(500).send(e);
+  } catch (error) {
+    res.status(500).send(error);
   }
 };
 
@@ -65,8 +65,8 @@ export const updateUser = async (req, res) => {
     updates.forEach((update) => (req.user[update] = req.body[update]));
     await req.user.save();
     res.send(req.user);
-  } catch (e) {
-    res.status(400).send(e);
+  } catch (error) {
+    res.status(400).send(error.message);
   }
 };
 
@@ -75,8 +75,8 @@ export const deleteUser = async (req, res) => {
   try {
     await req.user.remove();
     res.send(req.user);
-  } catch (e) {
-    res.status(500).send();
+  } catch (error) {
+    res.status(500).send(error.message);
   }
 };
 
@@ -85,6 +85,6 @@ export const getMyProfile = async (req, res) => {
   try {
     res.send(req.user);
   } catch (error) {
-    res.status(400).send();
+    res.status(400).send(error.message);
   }
 };
