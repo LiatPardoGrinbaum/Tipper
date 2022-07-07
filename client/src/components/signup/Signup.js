@@ -24,7 +24,7 @@ const Signup = () => {
       password,
     };
     try {
-      const { data } = await API.post("/users", newUser);
+      const { data } = await API.post("/users/register", newUser);
       setEmail("");
       setName("");
       setPassword("");

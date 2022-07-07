@@ -5,6 +5,7 @@
   height: 6rem;
   position: fixed;
   top: 0;
+  background: url("../../assets/navbar.JPG") no-repeat center center/cover;
 }
 
 .navbar-inner {

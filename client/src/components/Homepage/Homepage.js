@@ -1,4 +1,5 @@
 import "./homepage.css";
+import { NavLink } from "react-router-dom";
 // import welcomeImg from "../../assets/welcomepage.jpg";
 
 const Homepage = () => {
@@ -8,7 +9,12 @@ const Homepage = () => {
         <div className="left-welcome">
           <h1>Welcome </h1>
           <h2> Want to get some new ideas? Need some tips for any ocassion?</h2>
-          <h2> Sign in and share your tips with us!</h2>
+          <h2>
+            <NavLink to="/register">Sign up</NavLink> and share your tips with us!
+          </h2>
+          <h3>
+            Already a member? <NavLink to="/register">Sign in</NavLink>
+          </h3>
         </div>
         <div className="right-welcome"></div>
       </div>
