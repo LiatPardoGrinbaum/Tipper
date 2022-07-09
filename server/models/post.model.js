@@ -21,12 +21,14 @@ const postSchema = new mongoose.Schema(
       max: 500, //charecters
       required: true,
     },
-    img: {
-      type: String,
-    },
+
     likes: {
       type: Array,
       default: [],
+    },
+    image: {
+      type: Buffer,
+      contentType: String,
     },
   },
   { timestamps: true }

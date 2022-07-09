@@ -6,6 +6,7 @@ export const createPost = async (req, res) => {
     // const newPost = new Post(req.body);
     const newPost = new Post({
       ...req.body,
+      image: req.file.buffer,
       owner: req.user._id,
     });
     await newPost.save();
@@ -85,7 +86,7 @@ export const addOrRemoveLike = async (req, res) => {
   }
 };
 
-//get all posts (with option to search by category with query params)
+//get all posts (with option to search by category with query params   )
 export const getAllPosts = async (req, res) => {
   try {
     const matchQuery = req.query.category;

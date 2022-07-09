@@ -37,6 +37,7 @@ const Category = (props) => {
     return posts.map((post) => {
       return (
         <React.Fragment key={post._id}>
+          {/* add PostComponent here instead */}
           <p>{post.title}</p>
           <p>{post.description}</p>
         </React.Fragment>

@@ -36,7 +36,21 @@ const userSchema = new mongoose.Schema({
       },
     },
   ],
+  avatar: {
+    type: Buffer,
+  },
 });
+
+//hiding private data
+//toJSON stringify user res
+userSchema.methods.toJSON = function () {
+  const user = this;
+  const userObject = user.toObject(); //toObeject is a method provided by mongoose
+
+  delete userObject.password;
+  delete userObject.tokens;
+  return userObject;
+};
 
 //connection between user and posts
 //virtual means we're not really changing what we store in the user document

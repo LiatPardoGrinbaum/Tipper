@@ -88,3 +88,19 @@ export const getMyProfile = async (req, res) => {
     res.status(400).send(error.message);
   }
 };
+
+//upload profile picture
+export const uploadImage = async (req, res) => {
+  req.user.avatar = req.file.buffer;
+  await req.user.save();
+  res.send();
+};
+
+//delete profile picture
+export const deleteImage = async (req, res) => {
+  req.user.avatar = undefined;
+  await req.user.save();
+  res.send();
+};
+
+//get profile picture of users by id:
