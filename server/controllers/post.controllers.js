@@ -84,3 +84,24 @@ export const addOrRemoveLike = async (req, res) => {
     res.status(500).send(error.message);
   }
 };
+
+//get all posts (with option to search by category with query params)
+export const getAllPosts = async (req, res) => {
+  try {
+    const matchQuery = req.query.category;
+    console.log(matchQuery);
+    if (req.user) {
+      //if user authenticate. not anyone can see.
+      if (matchQuery) {
+        const posts = await Post.find({ category: matchQuery });
+        console.log("got it");
+        res.status(200).send(posts);
+      }
+      const posts = await Post.find({});
+      // const posts = await Post.find({}).limit(3).exec();
+      res.status(200).send(posts);
+    }
+  } catch (error) {
+    res.status(400).send();
+  }
+};

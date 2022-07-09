@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./navbar.css";
 import { useContext } from "react";
 import { MyContext } from "../../context/MyContext";
 // import API from "../../api/user.api";
@@ -46,14 +45,10 @@ const Navbar = () => {
               <NavLink to="/" className="link" exact={true}>
                 Home
               </NavLink>
-              <NavLink to="/profile" className="link" exact={true}>
-                My profile
+              <NavLink to="/profile" className="link">
+                Profile
               </NavLink>
-              <NavLink
-                to="/"
-                className="logout"
-                style={{ backgroundColor: "transparent", border: "none", margin: "0px" }}
-                onClick={logOut}>
+              <NavLink to="/" className="logout" onClick={logOut}>
                 {" "}
                 {/* change to a href */}
                 Logout
@@ -67,9 +62,9 @@ const Navbar = () => {
               <NavLink to="/login" className="link" exact={true}>
                 Login
               </NavLink>
-              <NavLink to="/register" className="link" exact={true}>
+              {/*        <NavLink to="/register" className="link" exact={true}>
                 Sign Up
-              </NavLink>
+              </NavLink> */}
             </>
           )}
         </div>

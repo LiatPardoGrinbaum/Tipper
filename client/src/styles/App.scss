@@ -1,0 +1,35 @@
+@import "./variables";
+@import "./navabar";
+@import "./main";
+@import "./category";
+@import "./createPost";
+@import "./homePage";
+@import "./profilePage";
+@import "./loginLogoutPages";
+
+.App {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: fixed;
+  flex-direction: column;
+  // background: url("../assets/beach-background.jpg") no-repeat center center/cover;
+  background: url("../assets/backGROUND.jpg") no-repeat center center/cover;
+  background-attachment: fixed;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 8rem; */
+  width: 100%;
+  min-height: 100vh;
+}
+
+.spinner {
+  margin-top: 1rem;
+}
+.spinner img {
+  height: 4rem;
+}

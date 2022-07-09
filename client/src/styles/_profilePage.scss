@@ -1,0 +1,27 @@
+.profile-container {
+  width: 100%;
+  // border: 1px solid rgb(202, 76, 76);
+  // height: 18rem;
+  display: flex;
+  margin-top: 6rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.profile-inner {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // position: relative;
+}
+.profile-right {
+  width: 70%;
+  border: 1px solid black;
+}
+
+@media (max-width: 700px) {
+  .profile-inner {
+    flex-direction: column-reverse;
+  }
+}

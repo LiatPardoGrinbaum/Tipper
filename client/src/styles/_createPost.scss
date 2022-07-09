@@ -1,0 +1,17 @@
+.createPost-container {
+  width: 25%;
+  height: 35rem;
+  border: 1px solid black;
+  position: fixed; //fixed to window
+
+  top: 8rem;
+  right: 4rem;
+}
+
+@media (max-width: 700px) {
+  .createPost-container {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+}

@@ -4,21 +4,22 @@ const postSchema = new mongoose.Schema(
   {
     owner: {
       type: mongoose.Schema.Types.ObjectId,
-      requires: true,
+      required: true,
       ref: "User",
     },
     category: {
       type: String,
-      requires: true,
+      required: true,
+      lowercase: true,
     },
     title: {
       type: String,
-      requires: true,
+      required: true,
     },
     description: {
       type: String,
       max: 500, //charecters
-      requires: true,
+      required: true,
     },
     img: {
       type: String,

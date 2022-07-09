@@ -1,0 +1,85 @@
+.navbar-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 6rem;
+  position: fixed;
+  top: 0;
+  // background: url("../assets/navbar.JPG") no-repeat center center/cover;
+  background: #d2ebe8;
+  z-index: 1;
+}
+
+.navbar-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0rem 2rem;
+  // border-bottom: 2px solid rgb(195, 195, 195);
+  // box-shadow: rgba(33, 35, 38, 0.337) 0px 10px 10px -10px;
+}
+
+.right-container {
+  display: flex;
+  margin-right: 3rem;
+}
+
+.right-container a {
+  padding: 0.5rem 0.5rem;
+  margin: 0px 0.2rem;
+  text-decoration: none;
+  color: $primaryLinkColor;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: 0.3s;
+  // border-bottom: 0.5px solid transparent;
+  width: 5rem;
+  // border: 0.5px solid transparent;
+  background: $navbarHoverColor;
+  border-radius: 1.2rem;
+  &:hover {
+    color: $navbarHoverColor;
+    background: rgb(12, 153, 185);
+  }
+  &.active {
+    background: rgb(12, 153, 185);
+    color: $navbarHoverColor;
+  }
+}
+
+//logout active fixed style
+a.logout.active {
+  background: $navbarHoverColor;
+  color: $primaryLinkColor;
+  &:hover {
+    color: $navbarHoverColor;
+    background: rgb(12, 153, 185);
+  }
+}
+
+.logo {
+  /* margin-left: 0.8rem; */
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #c8fafa;
+  margin-left: 3rem;
+}
+
+.logo a {
+  padding: 0.5rem 0rem;
+  text-decoration: none;
+  color: $primaryLinkColor;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Handlee", cursive;
+}
+.logo img {
+  width: 80px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
