@@ -1,13 +1,40 @@
 .createPost-container {
   width: 25%;
-  height: 35rem;
-  border: 1px solid black;
+  min-height: 30rem;
   position: fixed; //fixed to window
-
+  padding: 2rem;
   top: 8rem;
   right: 4rem;
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+  background: $secondaryColor;
+  h2 {
+    color: $thirdColor;
+  }
+  border-radius: 2rem;
+  box-shadow: $boxShadow;
+}
+.select {
+  width: 100%;
+  width: 300px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  label {
+    text-align: left;
+  }
 }
 
+.field {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 1.2rem; //fix for the react-select default style
+}
 @media (max-width: 700px) {
   .createPost-container {
     position: relative;

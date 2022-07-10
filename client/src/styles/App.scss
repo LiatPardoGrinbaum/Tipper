@@ -33,3 +33,17 @@
 .spinner img {
   height: 4rem;
 }
+.btn {
+  background: $navbarHoverColor;
+  color: $primaryLinkColor;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  font-family: "Sawarabi Gothic", sans-serif;
+  border-radius: 2rem;
+  border: 1px solid rgb(206, 186, 155);
+  font-weight: bold;
+  transition: 0.3s;
+  &:hover {
+    background: rgb(235, 228, 216);
+  }
+}

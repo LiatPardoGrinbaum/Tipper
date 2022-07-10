@@ -10,7 +10,7 @@
   margin-top: 10rem; //beacase there isnt login page container like in other pages.
   background: rgba(165, 192, 192, 0.192);
   border-radius: 1.5rem;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: $boxShadow;
 }
 .signup-container {
   display: flex;
@@ -24,7 +24,7 @@
   // margin-top: 8rem;
   background: rgba(165, 192, 192, 0.192);
   border-radius: 1.5rem;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: $boxShadow;
   h1 {
     color: $loginLogoutTitle;
   }

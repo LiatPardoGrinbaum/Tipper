@@ -14,6 +14,7 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const onHandleSumbit = async (e) => {
+    setError("");
     e.preventDefault();
     setSpinner(true);
     try {

@@ -6,6 +6,8 @@ function ContextProvider({ children }) {
   const [loggedUser, setLoggedUser] = useState(null);
   const [token, setToken] = useState(null);
   const [spinner, setSpinner] = useState(false);
+  const [myPosts, setMyPosts] = useState([]);
+  const [render, setRender] = useState(false);
 
   const values = {
     loggedUser,
@@ -14,6 +16,10 @@ function ContextProvider({ children }) {
     setToken,
     spinner,
     setSpinner,
+    myPosts,
+    setMyPosts,
+    render,
+    setRender,
   };
 
   useEffect(() => {

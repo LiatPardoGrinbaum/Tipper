@@ -7,6 +7,8 @@ import express from "express";
 const fileName = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(fileName);
 const publicDirPath = path.join(__dirname, "client/build");
+const imagespath = path.join(__dirname, "images");
+
 console.log("dirname", __dirname);
 console.log(publicDirPath);
 
@@ -14,6 +16,7 @@ const PORT = process.env.PORT || 5050;
 
 //pay attention to the location of this:
 app.use(express.static(publicDirPath));
+app.use("/images", express.static(imagespath));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(publicDirPath, "index.html"));

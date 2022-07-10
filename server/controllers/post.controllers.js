@@ -1,14 +1,16 @@
 import { Post } from "../models/post.model.js";
+import fs from "fs";
 
 //create new post identified by the user created it
 export const createPost = async (req, res) => {
   try {
-    // const newPost = new Post(req.body);
+    if (!req.body.title || !req.body.description || !req.body.category) throw new Error("Please fill all fields.");
     const newPost = new Post({
       ...req.body,
-      image: req.file.buffer,
+      image: req.file.path,
       owner: req.user._id,
     });
+
     await newPost.save();
     res.status(201).send(newPost);
   } catch (error) {

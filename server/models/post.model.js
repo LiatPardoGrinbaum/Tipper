@@ -9,17 +9,17 @@ const postSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      required: true,
+      required: [true, "Category is a required field"],
       lowercase: true,
     },
     title: {
       type: String,
-      required: true,
+      required: [true, "Title is a required field"],
     },
     description: {
       type: String,
       max: 500, //charecters
-      required: true,
+      required: [true, "Description is a required field"],
     },
 
     likes: {
@@ -27,8 +27,7 @@ const postSchema = new mongoose.Schema(
       default: [],
     },
     image: {
-      type: Buffer,
-      contentType: String,
+      type: String,
     },
   },
   { timestamps: true }
