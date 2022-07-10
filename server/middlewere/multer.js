@@ -11,6 +11,7 @@ const storage = multer.diskStorage({
     cb(null, file.fieldname + "-" + uniqueSuffix + "." + fileEnd);
   },
 });
+
 const upload = multer({
   limits: {
     fileSize: 1000000,

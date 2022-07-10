@@ -5,7 +5,7 @@ const postSchema = new mongoose.Schema(
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "User",
+      ref: "users",
     },
     category: {
       type: String,
@@ -15,10 +15,11 @@ const postSchema = new mongoose.Schema(
     title: {
       type: String,
       required: [true, "Title is a required field"],
+      maxLength: 120,
     },
     description: {
       type: String,
-      max: 500, //charecters
+      maxLength: 1000, //charecters
       required: [true, "Description is a required field"],
     },
 

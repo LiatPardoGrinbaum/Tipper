@@ -187,11 +187,8 @@ a.logout.active:hover {
 
 .createPost-container {
   width: 25%;
-  min-height: 30rem;
-  position: fixed;
+  height: 30rem;
   padding: 2rem;
-  top: 8rem;
-  right: 4rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;

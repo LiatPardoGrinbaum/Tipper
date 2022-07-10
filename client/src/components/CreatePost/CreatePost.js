@@ -1,11 +1,11 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import API from "../../api/user.api";
 import Input from "../Input/Input";
 import Select from "react-select";
 import { MyContext } from "../../context/MyContext";
 
 const CreatePost = () => {
-  const { render, setRender } = useContext(MyContext);
+  const { setRender } = useContext(MyContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -13,11 +13,7 @@ const CreatePost = () => {
   const [error, setError] = useState(null);
 
   // const [message, setMessage] = useState(null);
-  // useEffect(() => {
-  //   if (render) {
-  //     alert("Your tip was published successfuly!");
-  //   }
-  // }, [render]);
+
   const insertOptions = () => {
     const options = [];
     const categories = ["Home&Garden", "Fitness", "Food", "Travel", "Wellness", "Study"];
@@ -45,7 +41,7 @@ const CreatePost = () => {
       formData.append("category", category);
       formData.append("image", file);
 
-      const { data } = await API.post("posts/create", formData, {
+      await API.post("posts/create", formData, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -55,8 +51,10 @@ const CreatePost = () => {
       alert("Your tip was published successfuly!");
       setTitle("");
       setDescription("");
-      setCategory("");
-      setRender(true);
+      setCategory(null);
+
+      setFile(null);
+      setRender(true); //for profile component to render
     } catch (err) {
       console.log(err);
       setError(err.response.data);

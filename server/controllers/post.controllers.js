@@ -7,10 +7,11 @@ export const createPost = async (req, res) => {
     if (!req.body.title || !req.body.description || !req.body.category) throw new Error("Please fill all fields.");
     const newPost = new Post({
       ...req.body,
-      image: req.file.path,
       owner: req.user._id,
     });
-
+    if (req.file) {
+      newPost.image = req.file.path;
+    }
     await newPost.save();
     res.status(201).send(newPost);
   } catch (error) {

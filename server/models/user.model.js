@@ -55,7 +55,7 @@ userSchema.methods.toJSON = function () {
 //connection between user and posts
 //virtual means we're not really changing what we store in the user document
 userSchema.virtual("userPosts", {
-  ref: "posts",
+  ref: "posts", //exact name of Post model
   localField: "_id", //user's id
   foreignField: "owner",
 });
