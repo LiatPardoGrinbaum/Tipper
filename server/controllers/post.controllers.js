@@ -5,6 +5,9 @@ import fs from "fs";
 export const createPost = async (req, res) => {
   try {
     if (!req.body.title || !req.body.description || !req.body.category) throw new Error("Please fill all fields.");
+    if (req.body.title.length > 100) throw new Error("Title has maximum number of charecters allowed of 100.");
+    if (req.body.description.length > 500)
+      throw new Error("Description has maximum number of charecters allowed of 120.");
     const newPost = new Post({
       ...req.body,
       owner: req.user._id,

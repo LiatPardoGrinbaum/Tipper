@@ -1,8 +1,48 @@
 .post-container {
   width: 25rem;
-  height: 20rem;
-  border: 1px solid rgb(206, 158, 158);
+  height: 26rem;
+
+  overflow: hidden;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.805);
+  border-radius: 2rem;
+  box-shadow: $boxShadow;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(219, 105, 17);
+    &:hover {
+      color: $titleColor;
+    }
+  }
+  .cat-Link {
+    font-size: 1rem;
+  }
+  .fa-tags {
+    color: grey;
+  }
+  .createdBy {
+    color: grey;
+  }
 }
 .postImage img {
   border-radius: 50%;
+  box-shadow: $boxShadow;
+}
+.postTitle h3 {
+  font-size: 1.1rem;
+}
+
+.cat-update-delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    padding: 0.3rem 0.5rem;
+    margin: 0rem 0.2rem;
+  }
 }

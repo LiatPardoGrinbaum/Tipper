@@ -1,5 +1,5 @@
 .category-container {
-  width: 85%;
+  width: 95%;
   margin-top: 6rem;
   display: flex;
   align-items: center;
@@ -20,4 +20,24 @@
       color: $primaryLinkColor;
     }
   }
+}
+.category-outer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.category-inner {
+  width: 90%;
+}
+
+.post-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 25rem);
+  gap: 2rem;
+  padding-top: 2rem;
+  align-items: center;
+  justify-content: center;
 }

@@ -162,7 +162,7 @@ a.logout.active:hover {
 }
 
 .category-container {
-  width: 85%;
+  width: 95%;
   margin-top: 6rem;
   display: flex;
   align-items: center;
@@ -185,9 +185,31 @@ a.logout.active:hover {
   color: rgb(70, 69, 69);
 }
 
+.category-outer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.category-inner {
+  width: 90%;
+}
+
+.post-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 25rem);
+  gap: 2rem;
+  padding-top: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .createPost-container {
   width: 360px;
-  height: 30rem;
+  min-height: 30rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -309,8 +331,7 @@ a.logout.active:hover {
 }
 
 .profile-left {
-  width: 70%;
-  border: 1px solid black;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -318,9 +339,10 @@ a.logout.active:hover {
 }
 
 .posts-container-profile {
-  border: 1px solid black;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 2rem;
 }
 
 @media (max-width: 700px) {
@@ -434,12 +456,52 @@ input::placeholder {
 
 .post-container {
   width: 25rem;
-  height: 20rem;
-  border: 1px solid rgb(206, 158, 158);
+  height: 26rem;
+  overflow: hidden;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.805);
+  border-radius: 2rem;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.post-container a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(219, 105, 17);
+}
+.post-container a:hover {
+  color: rgb(12, 153, 185);
+}
+.post-container .cat-Link {
+  font-size: 1rem;
+}
+.post-container .fa-tags {
+  color: grey;
+}
+.post-container .createdBy {
+  color: grey;
 }
 
 .postImage img {
   border-radius: 50%;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.postTitle h3 {
+  font-size: 1.1rem;
+}
+
+.cat-update-delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cat-update-delete button {
+  padding: 0.3rem 0.5rem;
+  margin: 0rem 0.2rem;
 }
 
 .post-page-container {

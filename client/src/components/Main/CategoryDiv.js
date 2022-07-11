@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
 
 export const CategoryDiv = ({ category }) => {
+  const validCategory = () => {
+    return category.name === "Home&Garden" ? "home" : category.name.toLowerCase();
+  };
   return (
     <NavLink
       to={{
-        pathname: `/posts/category/${category.name.toLowerCase()}`,
-        state: {
-          name: category.name.toLowerCase(),
-        },
+        pathname: `/posts/category/${validCategory()}`,
       }}>
       {/*  <NavLink to={`/posts/category/${category.name.toLowerCase()}`} exact={true} state={{ hii: "hello" }}> */}
       <div className="categoryBox">

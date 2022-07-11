@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import API from "../../api/user.api";
+import { Post } from "../../pages/Profile/Post";
 import { Spinner } from "../Spinner/spinner";
 
 const Category = (props) => {
   const [posts, setPosts] = useState([]);
   const [spinner, setSpinner] = useState(false);
+  // const { id } = useParams();
   /* 2 ways to pass props..
    console.log(props.match.params);
   console.log(props.location.state); */
   useEffect(() => {
+    console.log(props);
+    // console.log(id);
     setSpinner(true);
-    let categoryName = props.location.state.name;
+    let categoryName = props.match.params.id;
     try {
       const getData = async () => {
         if (categoryName === "home&garden") {
@@ -24,22 +28,21 @@ const Category = (props) => {
           },
         });
         setPosts(data);
-        console.log(data);
+
         setSpinner(false);
       };
       getData();
     } catch (err) {
       console.log(err);
     }
-  }, [props.location.state.name]);
+  }, []);
 
   const insertPosts = () => {
     return posts.map((post) => {
       return (
         <React.Fragment key={post._id}>
           {/* add PostComponent here instead */}
-          <p>{post.title}</p>
-          <p>{post.description}</p>
+          <Post postObj={post} />
         </React.Fragment>
       );
     });
@@ -50,15 +53,20 @@ const Category = (props) => {
         <Spinner />
       ) : (
         <>
-          <NavLink to="/" exact={true} className="backLink">
-            Back
-          </NavLink>
-          <h2>Hello</h2>
-          <div className="searchBar">
-            <input />
+          <div className="category-outer">
+            <div>
+              <NavLink to="/" exact={true} className="backLink">
+                Back
+              </NavLink>
+              <h2>Hello</h2>
+              <div className="searchBar">
+                <input />
+              </div>
+            </div>
+            <div className="category-inner">
+              <div className="post-wrapper">{insertPosts()}</div>
+            </div>
           </div>
-
-          <div className="post-wrapper">{insertPosts()}</div>
         </>
       )}
     </div>

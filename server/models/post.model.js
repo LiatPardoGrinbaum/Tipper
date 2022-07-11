@@ -18,7 +18,7 @@ const postSchema = new mongoose.Schema(
     title: {
       type: String,
       required: [true, "Title is a required field"],
-      maxLength: 120,
+      maxLength: 100,
     },
     description: {
       type: String,
