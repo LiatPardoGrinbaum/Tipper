@@ -3,6 +3,7 @@ import API from "../../api/user.api";
 import Input from "../Input/Input";
 import Select from "react-select";
 import { MyContext } from "../../context/MyContext";
+import { Redirect } from "react-router-dom";
 
 const CreatePost = () => {
   const { setRender } = useContext(MyContext);
@@ -51,10 +52,11 @@ const CreatePost = () => {
       alert("Your tip was published successfuly!");
       setTitle("");
       setDescription("");
-      setCategory(null);
+      setCategory(0);
 
       setFile(null);
       setRender(true); //for profile component to render
+      return <Redirect to="/profile" />;
     } catch (err) {
       console.log(err);
       setError(err.response.data);

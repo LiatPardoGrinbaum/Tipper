@@ -7,6 +7,9 @@ const postSchema = new mongoose.Schema(
       required: true,
       ref: "users",
     },
+    ownerName: {
+      type: String,
+    },
     category: {
       type: String,
       required: [true, "Category is a required field"],

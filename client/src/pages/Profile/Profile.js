@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import CreatePost from "../../components/CreatePost/CreatePost";
 import { Spinner } from "../../components/Spinner/spinner";
 import { MyContext } from "../../context/MyContext";
+import { Post } from "./Post";
 import API from "../../api/user.api";
 
 const Profile = () => {
@@ -31,14 +32,10 @@ const Profile = () => {
     setSpinner(true);
   }, [setMyPosts, render, setRender, setSpinner]);
   const insertMyPosts = () => {
-    return myPosts.map((post) => {
+    return myPosts.map((postObj) => {
       return (
-        <React.Fragment key={post._id}>
-          {/* add PostComponent here instead */}
-          <p>{post.title}</p>
-          <p>{post.description}</p>
-          <p>{post.image}</p>
-          <img src={post.image} width="200" alt="tip" />
+        <React.Fragment key={postObj._id}>
+          <Post postObj={postObj} />
         </React.Fragment>
       );
     });
@@ -46,12 +43,19 @@ const Profile = () => {
   return (
     <div className="profile-container">
       <h1>Profile page</h1>
+
       <div className="profile-inner">
-        <div className="profile-right">
-          <h3>Update my profile</h3>
-          <h3>Delete account</h3>
-          {spinner ? <Spinner /> : <div>{insertMyPosts()}</div>}
-          {error && <div style={{ color: "red" }}>{error}</div>}
+        <div className="profile-left">
+          {spinner ? (
+            <Spinner />
+          ) : (
+            <div>
+              {" "}
+              <h3>Update my profile</h3>
+              <h3>Delete account</h3>
+              <div className="posts-container-profile">{insertMyPosts()}</div>
+            </div>
+          )}
         </div>
         <CreatePost />{" "}
         {/* need to check if i should get it out of the profile-inner 

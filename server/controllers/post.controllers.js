@@ -8,11 +8,13 @@ export const createPost = async (req, res) => {
     const newPost = new Post({
       ...req.body,
       owner: req.user._id,
+      ownerName: req.user.name,
     });
     if (req.file) {
       newPost.image = req.file.path;
     }
     await newPost.save();
+
     res.status(201).send(newPost);
   } catch (error) {
     res.status(500).send(error.message);
@@ -35,6 +37,7 @@ export const getAllMyPosts = async (req, res) => {
   try {
     const userId = req.user._id;
     const posts = await Post.find({ owner: userId });
+
     res.send(posts);
   } catch (error) {
     res.status(500).send(error.message);

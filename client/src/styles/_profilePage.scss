@@ -11,13 +11,22 @@
 .profile-inner {
   width: 90%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   // position: relative;
 }
-.profile-right {
+.profile-left {
   width: 70%;
   border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.posts-container-profile {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 @media (max-width: 700px) {
