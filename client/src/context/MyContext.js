@@ -8,6 +8,8 @@ function ContextProvider({ children }) {
   const [spinner, setSpinner] = useState(false);
   const [myPosts, setMyPosts] = useState([]);
   const [render, setRender] = useState(false);
+  // const [updatedMode, setUpdatedMode] = useState(false);
+  // const [postToBeUpdated, setPostToBeUpdated] = useState({});
 
   const values = {
     loggedUser,
@@ -20,6 +22,10 @@ function ContextProvider({ children }) {
     setMyPosts,
     render,
     setRender,
+    // updatedMode,
+    // setUpdatedMode,
+    // postToBeUpdated,
+    // setPostToBeUpdated,
   };
 
   useEffect(() => {

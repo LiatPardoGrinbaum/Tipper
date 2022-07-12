@@ -1,12 +1,47 @@
 import { Link } from "react-router-dom";
+import { MyContext } from "../../context/MyContext";
+import { useContext, useEffect, useState } from "react";
+import tipImage from "../../assets/Tip.jpg";
+import API from "../../api/user.api";
 
 export const Post = ({ postObj }) => {
+  const { updatedMode, setUpdatedMode, postToBeUpdated, setPostToBeUpdated, loggedUser, myPosts, setMyPosts } =
+    useContext(MyContext);
+  const [likeCounter, setLikeCounter] = useState(postObj.likes.length);
+  const [post, setPost] = useState(postObj);
+
   const onHandleDelete = () => {};
-  const onHandleUpdate = () => {};
+  const onHandleUpdate = () => {
+    // setUpdatedMode((prev) => !prev);
+    // setPostToBeUpdated(postObj);
+  };
+
+  const likePost = async () => {
+    try {
+      const { data } = await API.patch(
+        `/like`,
+        { id: postObj._id },
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          },
+        }
+      );
+      setLikeCounter(data.likes.length);
+      setPost(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="post-container">
       <div className="postImage">
-        <img src={"http://localhost:5050/" + postObj.image} height="180" alt="tip" />
+        <img
+          src={postObj.image === "null" ? tipImage : `http://localhost:5050/${postObj.image}`}
+          height="180"
+          alt="tip"
+        />
       </div>
 
       <div className="postTitle">
@@ -15,7 +50,7 @@ export const Post = ({ postObj }) => {
       <div>
         <div className="createdBy">
           <p>
-            Created by: {postObj.ownerName}, at {new Date(postObj.createdAt).toDateString()}
+            Published by: {postObj.ownerName}, {new Date(postObj.createdAt).toLocaleString()}
           </p>
         </div>
         <div>
@@ -37,14 +72,23 @@ export const Post = ({ postObj }) => {
               </Link>
             </p>
           </div>
-          <div className="post-buttons">
-            <button className="btn" onClick={onHandleUpdate}>
-              update
-            </button>
-            <button className="btn" onClick={onHandleDelete}>
-              delete
-            </button>
+          <div className="likes">
+            <i
+              className="fa-solid fa-thumbs-up fa-lg"
+              style={!post.likes.includes(loggedUser._id) ? { color: "grey" } : { color: "rgb(59, 82, 198)" }}
+              onClick={likePost}></i>
+            {likeCounter}
           </div>
+          {postObj.owner === loggedUser._id && (
+            <div className="post-buttons">
+              <button className="btn" onClick={onHandleUpdate}>
+                update
+              </button>
+              <button className="btn" onClick={onHandleDelete}>
+                delete
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

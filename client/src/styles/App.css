@@ -168,7 +168,6 @@ a.logout.active:hover {
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  border: 1px solid black;
 }
 .category-container h2 {
   margin: 3rem 0rem;
@@ -191,10 +190,11 @@ a.logout.active:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 2rem 0rem;
 }
 
 .category-inner {
-  width: 90%;
+  width: 100%;
 }
 
 .post-wrapper {
@@ -202,7 +202,6 @@ a.logout.active:hover {
   display: grid;
   grid-template-columns: repeat(auto-fill, 25rem);
   gap: 2rem;
-  padding-top: 2rem;
   align-items: center;
   justify-content: center;
 }
@@ -343,6 +342,7 @@ a.logout.active:hover {
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   padding: 2rem;
+  justify-items: center;
 }
 
 @media (max-width: 700px) {
@@ -480,6 +480,9 @@ input::placeholder {
 }
 .post-container .fa-tags {
   color: grey;
+}
+.post-container .fa-thumbs-up {
+  margin-right: 0.3rem;
 }
 .post-container .createdBy {
   color: grey;

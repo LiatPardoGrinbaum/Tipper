@@ -39,7 +39,7 @@ export const createPost = async (req, res) => {
 export const getAllMyPosts = async (req, res) => {
   try {
     const userId = req.user._id;
-    const posts = await Post.find({ owner: userId });
+    const posts = await Post.find({ owner: userId }).sort({ updatedAt: -1 }).exec();
 
     res.send(posts);
   } catch (error) {
@@ -80,15 +80,26 @@ export const deletePost = async (req, res) => {
 //add or remove like from the logged in user.
 export const addOrRemoveLike = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    console.log(req.params.id); //62c5cb4d6d201bd1e9f36e80 -- example
-    console.log(req.user._id); //new ObjectId("62c2f365345835065eb656bf")  --example
+    //possible to use req.body to get the id
+    console.log(req.body);
+    const post = await Post.findById({ _id: req.body.id });
+
     if (!post.likes.includes(req.user._id)) {
-      await post.updateOne({ $push: { likes: req.user._id } });
-      res.status(200).send("The post has been liked.");
+      const updatedPost = await Post.findOneAndUpdate(
+        { _id: req.body.id },
+        { $push: { likes: req.user._id } },
+        { new: true }
+      );
+
+      res.status(200).send(updatedPost);
     } else {
-      await post.updateOne({ $pull: { likes: req.user._id } });
-      res.status(200).send("The post has been disliked.");
+      const updatedPost = await Post.findOneAndUpdate(
+        { _id: req.body.id },
+        { $pull: { likes: req.user._id } },
+        { new: true }
+      );
+
+      res.status(200).send(updatedPost);
     }
   } catch (error) {
     res.status(500).send(error.message);

@@ -1,9 +1,8 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import API from "../../api/user.api";
 import Input from "../Input/Input";
 import Select from "react-select";
 import { MyContext } from "../../context/MyContext";
-import { Redirect } from "react-router-dom";
 
 const CreatePost = () => {
   const { setRender } = useContext(MyContext);
@@ -12,8 +11,6 @@ const CreatePost = () => {
   const [category, setCategory] = useState("");
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
-
-  // const [message, setMessage] = useState(null);
 
   const insertOptions = () => {
     const options = [];
@@ -52,11 +49,9 @@ const CreatePost = () => {
       alert("Your tip was published successfuly!");
       setTitle("");
       setDescription("");
-      setCategory(0);
-
+      setCategory("");
       setFile(null);
       setRender(true); //for profile component to render
-      return <Redirect to="/profile" />;
     } catch (err) {
       console.log(err);
       setError(err.response.data);

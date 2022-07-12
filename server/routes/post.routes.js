@@ -20,6 +20,6 @@ postRouter.post("/posts/create", auth, upload.single("image"), createPost, (erro
 });
 postRouter.patch("/posts/:id", auth, updatePost);
 postRouter.delete("/posts/:id", auth, deletePost);
-postRouter.patch("/posts/like/:id", auth, addOrRemoveLike);
+postRouter.patch("/like", auth, addOrRemoveLike);
 
 export { postRouter };
