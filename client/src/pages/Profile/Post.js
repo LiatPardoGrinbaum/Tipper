@@ -5,8 +5,7 @@ import tipImage from "../../assets/Tip.jpg";
 import API from "../../api/user.api";
 
 export const Post = ({ postObj }) => {
-  const { updatedMode, setUpdatedMode, postToBeUpdated, setPostToBeUpdated, loggedUser, myPosts, setMyPosts } =
-    useContext(MyContext);
+  const { loggedUser } = useContext(MyContext);
   const [likeCounter, setLikeCounter] = useState(postObj.likes.length);
   const [post, setPost] = useState(postObj);
 
@@ -81,9 +80,9 @@ export const Post = ({ postObj }) => {
           </div>
           {postObj.owner === loggedUser._id && (
             <div className="post-buttons">
-              <button className="btn" onClick={onHandleUpdate}>
-                update
-              </button>
+              <Link to={{ pathname: "/update/post", state: postObj }}>
+                <button className="btn">Update</button>
+              </Link>
               <button className="btn" onClick={onHandleDelete}>
                 delete
               </button>

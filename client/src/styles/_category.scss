@@ -1,18 +1,22 @@
 .category-container {
-  width: 95%;
+  width: 100%;
   margin-top: 6rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   h2 {
-    margin: 3rem 0rem;
+    margin: 0rem 0rem 1rem 0rem;
+    font-family: "Handlee", cursive;
+    font-size: 3rem;
   }
+
   .backLink {
     text-decoration: none;
     color: $titleColor;
+
     align-self: flex-start;
-    margin: 0.2rem 0rem;
+    margin: 0.2rem 1rem;
     font-size: 1.1rem;
     font-weight: bold;
     &:hover {
@@ -26,7 +30,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 2rem 0rem;
+  padding-bottom: 2rem;
 }
 .category-inner {
   width: 100%;
@@ -34,10 +38,32 @@
 
 .post-wrapper {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 25rem);
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, 25rem);
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   // padding-top: 2rem;
   align-items: center;
   justify-content: center;
+}
+
+.topBar {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  .searchBar {
+    width: 70%;
+
+    input {
+      padding-left: 0.4rem;
+      margin: 0.2rem;
+      border-radius: 0.5rem;
+      width: 80%;
+      height: 2rem;
+      border: 0.5px grey solid;
+    }
+  }
 }

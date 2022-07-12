@@ -69,7 +69,8 @@ a.logout.active {
 .logo a {
   padding: 0.5rem 0rem;
   text-decoration: none;
-  color: $primaryLinkColor;
+  color: white;
+  text-shadow: 2px 2px 2px $titleColor;
   font-size: 2rem;
   font-weight: bold;
   font-family: "Handlee", cursive;

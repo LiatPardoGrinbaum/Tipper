@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import CreatePost from "../../components/CreatePost/CreatePost";
+import { UserManager } from "./UserManager";
 import { Spinner } from "../../components/Spinner/spinner";
 import { MyContext } from "../../context/MyContext";
 import { Post } from "./Post";
 import API from "../../api/user.api";
+import CreatePost from "../../components/CreatePost/CreatePost";
 
 const Profile = () => {
-  const { myPosts, setMyPosts, setSpinner, spinner, setRender, render } = useContext(MyContext);
+  const { myPosts, setMyPosts, setSpinner, spinner, setRender, render, loggedUser } = useContext(MyContext);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const Profile = () => {
     }
     setSpinner(true);
   }, [setMyPosts, render, setRender, setSpinner]);
+
   const insertMyPosts = () => {
     return myPosts.map((postObj) => {
       return (
@@ -42,7 +44,9 @@ const Profile = () => {
   };
   return (
     <div className="profile-container">
-      <h1>Profile page</h1>
+      <h1>
+        Welcome, <span>{loggedUser && loggedUser.name}</span>
+      </h1>
 
       <div className="profile-inner">
         <div className="profile-left">
@@ -50,9 +54,6 @@ const Profile = () => {
             <Spinner />
           ) : (
             <div>
-              {" "}
-              <h3>Update my profile</h3>
-              <h3>Delete account</h3>
               <div className="posts-container-profile">{insertMyPosts()}</div>
             </div>
           )}

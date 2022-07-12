@@ -16,12 +16,9 @@ const Category = (props) => {
     // console.log(id);
     setSpinner(true);
     let categoryName = props.match.params.id;
+    console.log(categoryName);
     try {
       const getData = async () => {
-        if (categoryName === "home&garden") {
-          categoryName = "home";
-        }
-        console.log(categoryName);
         const { data } = await API.get(`/posts?category=${categoryName}`, {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -54,15 +51,21 @@ const Category = (props) => {
       ) : (
         <>
           <div className="category-outer">
-            <div>
-              <NavLink to="/" exact={true} className="backLink">
-                Back
-              </NavLink>
-              <h2>Hello</h2>
+            <NavLink to="/" exact={true} className="backLink">
+              Back
+            </NavLink>
+            <h2>{props.match.params.id}</h2>
+
+            {/* ! convert topBar to a component ! */}
+            <div className="topBar">
               <div className="searchBar">
-                <input />
+                <input type="text" placeholder="search..." />
+              </div>
+              <div className="sortBar">
+                <select></select>
               </div>
             </div>
+
             <div className="category-inner">
               <div className="post-wrapper">{insertPosts()}</div>
             </div>

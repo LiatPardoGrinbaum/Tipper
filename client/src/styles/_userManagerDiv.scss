@@ -1,4 +1,4 @@
-.createPost-container {
+.usermanager-container {
   width: 360px;
   min-height: 30rem;
 
@@ -16,26 +16,6 @@
   }
   border-radius: 2rem;
   box-shadow: $boxShadow;
-}
-
-.field {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  margin: 0rem 1.2rem; //fix for the react-select default style
-}
-#title {
-  //some style came from login logout form style
-  width: 100%;
-  margin: 0;
-}
-#description {
-  padding: 0.2rem;
-  border-radius: 0.5rem;
-  width: 100%;
-  border: none;
 }
 
 @media (max-width: 700px) {

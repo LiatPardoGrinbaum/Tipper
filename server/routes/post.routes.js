@@ -23,3 +23,5 @@ postRouter.delete("/posts/:id", auth, deletePost);
 postRouter.patch("/like", auth, addOrRemoveLike);
 
 export { postRouter };
+
+//? The main difference between PUT and PATCH in REST API is that PUT handles updates by replacing the entire entity, while PATCH only updates the fields that you give it

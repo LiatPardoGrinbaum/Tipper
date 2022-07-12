@@ -8,7 +8,7 @@ import Homepage from "./pages/Homepage/Homepage";
 import Category from "./components/Category/Category"; //should move to pages folder
 import Profile from "./pages/Profile/Profile";
 import PostPage from "./pages/PostPage/PostPage";
-
+import UpdatePost from "./pages/UpdatePage/UpdatePost";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -25,6 +25,9 @@ function App() {
             <Route path="/posts/category/:id" component={Category} />
             <Route path="/profile" component={Profile} />
             <Route path="/posts/:id" component={PostPage} />
+
+            <Route path="/update/post" component={UpdatePost} />
+            {/*    <Route path="/update/user" component={UpdateUser} /> */}
           </Switch>
         </div>
       </BrowserRouter>

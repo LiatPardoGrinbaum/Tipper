@@ -63,7 +63,8 @@ a.logout.active:hover {
 .logo a {
   padding: 0.5rem 0rem;
   text-decoration: none;
-  color: rgb(70, 69, 69);
+  color: white;
+  text-shadow: 2px 2px 2px rgb(12, 153, 185);
   font-size: 2rem;
   font-weight: bold;
   font-family: "Handlee", cursive;
@@ -162,7 +163,7 @@ a.logout.active:hover {
 }
 
 .category-container {
-  width: 95%;
+  width: 100%;
   margin-top: 6rem;
   display: flex;
   align-items: center;
@@ -170,13 +171,15 @@ a.logout.active:hover {
   flex-direction: column;
 }
 .category-container h2 {
-  margin: 3rem 0rem;
+  margin: 0rem 0rem 1rem 0rem;
+  font-family: "Handlee", cursive;
+  font-size: 3rem;
 }
 .category-container .backLink {
   text-decoration: none;
   color: rgb(12, 153, 185);
   align-self: flex-start;
-  margin: 0.2rem 0rem;
+  margin: 0.2rem 1rem;
   font-size: 1.1rem;
   font-weight: bold;
 }
@@ -190,7 +193,7 @@ a.logout.active:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 2rem 0rem;
+  padding-bottom: 2rem;
 }
 
 .category-inner {
@@ -199,11 +202,30 @@ a.logout.active:hover {
 
 .post-wrapper {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 25rem);
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
   justify-content: center;
+}
+
+.topBar {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.topBar .searchBar {
+  width: 70%;
+}
+.topBar .searchBar input {
+  padding-left: 0.4rem;
+  margin: 0.2rem;
+  border-radius: 0.5rem;
+  width: 80%;
+  height: 2rem;
+  border: 0.5px grey solid;
 }
 
 .createPost-container {
@@ -221,16 +243,6 @@ a.logout.active:hover {
   color: rgb(55, 95, 85);
 }
 
-.select {
-  width: 100%;
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-}
-.select label {
-  text-align: left;
-}
-
 .field {
   width: 100%;
   display: flex;
@@ -242,11 +254,14 @@ a.logout.active:hover {
 
 #title {
   width: 100%;
+  margin: 0;
 }
 
 #description {
   padding: 0.2rem;
+  border-radius: 0.5rem;
   width: 100%;
+  border: none;
 }
 
 @media (max-width: 700px) {
@@ -321,6 +336,12 @@ a.logout.active:hover {
   justify-content: flex-start;
   flex-direction: column;
 }
+.profile-container h1 {
+  margin: 1rem 0rem;
+}
+.profile-container span {
+  color: rgb(12, 153, 185);
+}
 
 .profile-inner {
   width: 90%;
@@ -338,11 +359,12 @@ a.logout.active:hover {
 }
 
 .posts-container-profile {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
   padding: 2rem;
-  justify-items: center;
 }
 
 @media (max-width: 700px) {
@@ -515,6 +537,23 @@ input::placeholder {
   justify-content: flex-start;
   flex-direction: column;
   border: 1px solid black;
+}
+
+.updatePost-container {
+  width: 100%;
+  display: flex;
+  margin-top: 8rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.selectbar {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
 .App {

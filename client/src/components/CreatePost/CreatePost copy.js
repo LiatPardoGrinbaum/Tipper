@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import { useState, useContext, useRef } from "react";
 import API from "../../api/user.api";
 import Input from "../Input/Input";
 import Select from "react-select";
@@ -14,15 +14,14 @@ const CreatePost = () => {
   const [error, setError] = useState(null);
 
   const insertOptions = () => {
-    const categories = ["choose category", "Home&Garden", "Fitness", "Food", "Travel", "Wellness", "Study"];
-    const categoryValues = ["home", "fitness", "food", "travel", "wellness", "study"];
-    return categories.map((category, idx) => {
-      return (
-        <React.Fragment key={idx}>
-          <option value={categoryValues[idx]}>{category}</option>
-        </React.Fragment>
-      );
+    const options = [];
+    const categories = ["Home&Garden", "Fitness", "Food", "Travel", "Wellness", "Study"];
+    const categoriesCode = ["home", "fitness", "food", "travel", "wellness", "study"];
+    categories.forEach((category, idx) => {
+      const option = { value: categoriesCode[idx], label: category };
+      options.push(option);
     });
+    return options;
   };
 
   // const onHandleChange = (categoryCode) => {
@@ -80,7 +79,7 @@ const CreatePost = () => {
           <textarea
             id="description"
             type="textarea"
-            rows="7"
+            rows="5"
             cols="40"
             placeholder="Enter you tip here"
             value={description}
@@ -89,9 +88,20 @@ const CreatePost = () => {
             }}
           />
         </div>
-        <select className="selectbar" onChange={(e) => setCategory(e.target.value)} value={category}>
-          {insertOptions()}
-        </select>
+        <div className="select">
+          {/* <label>Select category:</label>
+          <Select
+            options={insertOptions()}
+            onChange={onHandleChange}
+            placeholder="categories"
+            defaultValue={category}
+          /> */}
+          <select onChange={(e) => setCategory(e.target.value)} value={category}>
+            <option value="">choose category</option>
+            <option value="home">home</option>
+            <option value="fitness"> fitness</option>
+          </select>
+        </div>
         <div className="field">
           <label htmlFor="image">Upload Image (optional):</label>
           <input
