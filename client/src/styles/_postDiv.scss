@@ -12,7 +12,6 @@
   justify-content: space-between;
   a {
     text-decoration: none;
-    font-size: 1.5rem;
     font-weight: bold;
     color: rgb(34, 34, 165);
     &:hover {
@@ -30,14 +29,17 @@
   }
   .post-buttons {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
+    gap: 0.5rem;
     .fa-pen-to-square {
       color: rgb(50, 144, 50);
-      width: 2rem;
+      font-size: 1.4rem;
     }
-    .fa-x {
+
+    .fa-trash-can {
       color: rgb(199, 71, 71);
+      font-size: 1.4rem;
     }
   }
 

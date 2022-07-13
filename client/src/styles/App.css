@@ -500,7 +500,6 @@ input::placeholder {
 }
 .post-container a {
   text-decoration: none;
-  font-size: 1.5rem;
   font-weight: bold;
   color: rgb(34, 34, 165);
 }
@@ -518,15 +517,17 @@ input::placeholder {
 }
 .post-container .post-buttons {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
+  gap: 0.5rem;
 }
 .post-container .post-buttons .fa-pen-to-square {
   color: rgb(50, 144, 50);
-  width: 2rem;
+  font-size: 1.4rem;
 }
-.post-container .post-buttons .fa-x {
+.post-container .post-buttons .fa-trash-can {
   color: rgb(199, 71, 71);
+  font-size: 1.4rem;
 }
 .post-container .createdBy,
 .post-container .updatedAt {
@@ -635,7 +636,7 @@ input::placeholder {
 .updatePost-container {
   width: 100%;
   display: flex;
-  margin-top: 6rem;
+  margin-top: 8rem;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;

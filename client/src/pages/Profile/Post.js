@@ -74,12 +74,12 @@ export const Post = ({ postObj }) => {
           </div>
           {postObj.owner === loggedUser._id && (
             <div className="post-buttons">
-              <Link to={{ pathname: "/update/post", state: postObj }}>
+              <Link to={{ pathname: "/update/post", state: postObj }} style={{ margin: "0" }}>
                 <i className="fa-solid fa-pen-to-square "></i>
               </Link>
-              <div onClick={onHandleDelete}>
-                <i className="fa-solid fa-trash fa-lg"></i>
-              </div>
+
+              <i class="fa-regular fa-trash-can" onClick={onHandleDelete}></i>
+
               {/*  <Link to={{ pathname: "/update/post", state: postObj }}>
                 <button className="btn">Update</button>
               </Link>

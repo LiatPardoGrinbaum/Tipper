@@ -62,9 +62,6 @@ const UpdatePost = (props) => {
 
   return (
     <div className="updatePost-container">
-      <p className="backtoPosts" onClick={() => props.history.goBack()}>
-        Back
-      </p>
       <div className="createPost-container">
         <form className="form" onSubmit={onHandleSubmit}>
           <h2>Create a new post</h2>
@@ -115,6 +112,9 @@ const UpdatePost = (props) => {
             Update post
           </button>
         </form>
+        <p className="backtoPosts" onClick={() => props.history.goBack()}>
+          Back
+        </p>
         {error && <div style={{ color: "red" }}>{error}</div>}
       </div>
     </div>
