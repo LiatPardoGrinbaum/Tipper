@@ -14,9 +14,9 @@
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
-    color: rgb(219, 105, 17);
+    color: rgb(34, 34, 165);
     &:hover {
-      color: $titleColor;
+      color: rgb(219, 105, 17);
     }
   }
   .cat-Link {
@@ -28,13 +28,31 @@
   .fa-thumbs-up {
     margin-right: 0.3rem;
   }
-  .createdBy {
+  .post-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .fa-pen-to-square {
+      color: rgb(50, 144, 50);
+      width: 2rem;
+    }
+    .fa-x {
+      color: rgb(199, 71, 71);
+    }
+  }
+
+  .createdBy,
+  .updatedAt {
     color: grey;
+    font-size: 0.8rem;
   }
 }
 .postImage img {
   border-radius: 50%;
   box-shadow: $boxShadow;
+  width: 270px;
+  height: 180px;
+  object-fit: cover;
 }
 .postTitle h3 {
   font-size: 1.1rem;

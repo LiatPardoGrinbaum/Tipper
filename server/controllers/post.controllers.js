@@ -3,11 +3,12 @@ import fs from "fs";
 
 //create new post identified by the user created it
 export const createPost = async (req, res) => {
+  console.log(req.body);
   try {
     if (!req.body.title || !req.body.description || !req.body.category) throw new Error("Please fill all fields.");
     if (req.body.title.length > 100) throw new Error("Title has maximum number of charecters allowed of 100.");
-    if (req.body.description.length > 500)
-      throw new Error("Description has maximum number of charecters allowed of 120.");
+    if (req.body.description.length > 1000)
+      throw new Error("Description has maximum number of charecters allowed of 1000.");
     const newPost = new Post({
       ...req.body,
       owner: req.user._id,
@@ -50,8 +51,11 @@ export const getAllMyPosts = async (req, res) => {
 //update post created by the logged in user with auth//didnt add the updates allowed cause i will decide in frontend what will be updated.
 export const updatePost = async (req, res) => {
   const updates = Object.keys(req.body);
+  console.log("req.body", req.body);
+  console.log(req.user._id);
   try {
-    const post = await Post.findOne({ _id: req.params.id, owner: req.user._id });
+    const post = await Post.findOne({ _id: req.body.id, owner: req.user._id });
+    console.log("post", post);
     if (!post) {
       return res.status(404).send();
     }
@@ -115,7 +119,7 @@ export const getAllPosts = async (req, res) => {
       //if user authenticate. not anyone can see.
       if (matchQuery) {
         const posts = await Post.find({ category: matchQuery });
-        console.log("got it");
+
         res.status(200).send(posts);
       }
       const posts = await Post.find({});

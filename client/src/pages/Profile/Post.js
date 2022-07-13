@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MyContext } from "../../context/MyContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import tipImage from "../../assets/Tip.jpg";
 import API from "../../api/user.api";
 
@@ -10,10 +10,10 @@ export const Post = ({ postObj }) => {
   const [post, setPost] = useState(postObj);
 
   const onHandleDelete = () => {};
-  const onHandleUpdate = () => {
-    // setUpdatedMode((prev) => !prev);
-    // setPostToBeUpdated(postObj);
-  };
+  // const onHandleUpdate = () => {
+  // setUpdatedMode((prev) => !prev);
+  // setPostToBeUpdated(postObj);
+  // };
 
   const likePost = async () => {
     try {
@@ -36,15 +36,17 @@ export const Post = ({ postObj }) => {
   return (
     <div className="post-container">
       <div className="postImage">
-        <img
-          src={postObj.image === "null" ? tipImage : `http://localhost:5050/${postObj.image}`}
-          height="180"
-          alt="tip"
-        />
+        <img src={postObj.image === "null" ? tipImage : `http://localhost:5050/${postObj.image}`} alt="tip" />
       </div>
 
       <div className="postTitle">
-        <h3>{postObj.title}</h3>
+        <Link
+          to={{
+            pathname: `/posts/${postObj._id}`,
+            state: postObj,
+          }}>
+          <h3>{postObj.title}</h3>
+        </Link>
       </div>
       <div>
         <div className="createdBy">
@@ -52,15 +54,7 @@ export const Post = ({ postObj }) => {
             Published by: {postObj.ownerName}, {new Date(postObj.createdAt).toLocaleString()}
           </p>
         </div>
-        <div>
-          <Link
-            to={{
-              pathname: `/posts/${postObj._id}`,
-              state: postObj,
-            }}>
-            Read more
-          </Link>
-        </div>
+        <div className="updatedAt">Updated at: {new Date(postObj.updatedAt).toLocaleString()}</div>
         <div className="cat-update-delete">
           <div>
             <p style={{ textAlign: "left" }}>
@@ -81,11 +75,17 @@ export const Post = ({ postObj }) => {
           {postObj.owner === loggedUser._id && (
             <div className="post-buttons">
               <Link to={{ pathname: "/update/post", state: postObj }}>
+                <i className="fa-solid fa-pen-to-square "></i>
+              </Link>
+              <div onClick={onHandleDelete}>
+                <i className="fa-solid fa-trash fa-lg"></i>
+              </div>
+              {/*  <Link to={{ pathname: "/update/post", state: postObj }}>
                 <button className="btn">Update</button>
               </Link>
               <button className="btn" onClick={onHandleDelete}>
                 delete
-              </button>
+              </button> */}
             </div>
           )}
         </div>

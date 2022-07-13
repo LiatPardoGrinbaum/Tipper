@@ -1,15 +1,17 @@
-import { useState, useContext, useEffect } from "react";
-import API from "../../api/user.api";
+// import { useState, useContext, useEffect } from "react";
+// import API from "../../api/user.api";
 import { Link } from "react-router-dom";
-import { MyContext } from "../../context/MyContext";
+// import { MyContext } from "../../context/MyContext";
 
 export const UserManager = () => {
   return (
-    <div className="createPost-container">
+    <div className="user-manager">
       <Link to="/">
-        <button className="btn">Create a new post</button>
+        <button className="btn">Update my account</button>
       </Link>
-      <button className="btn">Update your account</button>
+      <button className="btn" style={{ color: "rgb(223, 82, 82)" }}>
+        Delete my account
+      </button>
     </div>
   );
 };

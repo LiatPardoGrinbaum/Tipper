@@ -1,7 +1,6 @@
 import React, { useState, useContext, useRef } from "react";
 import API from "../../api/user.api";
 import Input from "../Input/Input";
-import Select from "react-select";
 import { MyContext } from "../../context/MyContext";
 
 const CreatePost = () => {
@@ -15,7 +14,7 @@ const CreatePost = () => {
 
   const insertOptions = () => {
     const categories = ["choose category", "Home&Garden", "Fitness", "Food", "Travel", "Wellness", "Study"];
-    const categoryValues = ["home", "fitness", "food", "travel", "wellness", "study"];
+    const categoryValues = ["choose category", "home", "fitness", "food", "travel", "wellness", "study"];
     return categories.map((category, idx) => {
       return (
         <React.Fragment key={idx}>
@@ -40,7 +39,7 @@ const CreatePost = () => {
       formData.append("description", description);
       formData.append("category", category);
       formData.append("image", file);
-
+      console.log("formdata", formData);
       await API.post("posts/create", formData, {
         headers: {
           "content-type": "multipart/form-data",
@@ -57,7 +56,7 @@ const CreatePost = () => {
       setRender(true); //for profile component to render
     } catch (err) {
       console.log(err);
-      setError(err.message);
+      setError(err.response.data);
     }
   };
   return (
@@ -79,7 +78,7 @@ const CreatePost = () => {
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
-            type="textarea"
+            type="text"
             rows="7"
             cols="40"
             placeholder="Enter you tip here"

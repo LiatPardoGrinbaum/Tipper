@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import API from "../../api/user.api";
 import { Post } from "../../pages/Profile/Post";
 import { Spinner } from "../Spinner/spinner";
@@ -12,7 +12,6 @@ const Category = (props) => {
    console.log(props.match.params);
   console.log(props.location.state); */
   useEffect(() => {
-    console.log(props);
     // console.log(id);
     setSpinner(true);
     let categoryName = props.match.params.id;
@@ -32,7 +31,7 @@ const Category = (props) => {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [props]);
 
   const insertPosts = () => {
     return posts.map((post) => {
@@ -51,9 +50,9 @@ const Category = (props) => {
       ) : (
         <>
           <div className="category-outer">
-            <NavLink to="/" exact={true} className="backLink">
+            <p className="backLink" onClick={() => props.history.goBack()}>
               Back
-            </NavLink>
+            </p>
             <h2>{props.match.params.id}</h2>
 
             {/* ! convert topBar to a component ! */}

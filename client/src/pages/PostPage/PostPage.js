@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import tipImage from "../../assets/Tip.jpg";
+import { Link } from "react-router-dom";
 
 const PostPage = (props) => {
   const [postObj, setPostObj] = useState({});
@@ -11,9 +12,33 @@ const PostPage = (props) => {
   });
   return (
     <div className="post-page-container">
-      <button onClick={() => props.history.goBack()}>Back</button>
-      <h1>Post Page</h1>
-      <p>{postObj.title}</p>
+      <p className="backtoPosts" onClick={() => props.history.goBack()}>
+        Back
+      </p>
+      <div className="post-page-inner">
+        <h2>{postObj.title}</h2>
+
+        <img src={postObj.image === "null" ? tipImage : `http://localhost:5050/${postObj.image}`} alt="tip" />
+
+        <div className="post-desc">
+          <p>{postObj.description}</p>
+        </div>
+        <div className="createdBy">
+          <p>
+            Published by: {postObj.ownerName}, {new Date(postObj.createdAt).toLocaleString()}
+          </p>
+        </div>
+        <div className="updatedAt">Updated at: {new Date(postObj.updatedAt).toLocaleString()}</div>
+        <div>
+          <p style={{ textAlign: "left" }}>
+            <i className="fa fa-tags"></i>{" "}
+            <Link className="cat-Link" to={`/posts/category/${postObj.category}`}>
+              {" "}
+              {postObj.category}
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

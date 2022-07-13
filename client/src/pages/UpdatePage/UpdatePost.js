@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import API from "../../api/user.api";
 import Input from "../../components/Input/Input";
 
@@ -8,7 +8,7 @@ const UpdatePost = (props) => {
   const [title, setTitle] = useState(props.location.state.title);
   const [description, setDescription] = useState(props.location.state.description);
   const [category, setCategory] = useState(props.location.state.category);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(props.location.state.image);
   const [error, setError] = useState(null);
 
   const insertOptions = () => {
@@ -38,8 +38,9 @@ const UpdatePost = (props) => {
       updatedPost.append("description", description);
       updatedPost.append("category", category);
       if (file) updatedPost.append("image", file);
+      updatedPost.append("id", props.location.state._id);
 
-      await API.patch("posts/create", updatedPost, {
+      await API.patch("posts/update", updatedPost, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -51,6 +52,7 @@ const UpdatePost = (props) => {
       setDescription("");
       setCategory("");
       setFile(null);
+      props.history.goBack();
       inputRef.current.value = null;
     } catch (err) {
       console.log(err);
@@ -60,6 +62,9 @@ const UpdatePost = (props) => {
 
   return (
     <div className="updatePost-container">
+      <p className="backtoPosts" onClick={() => props.history.goBack()}>
+        Back
+      </p>
       <div className="createPost-container">
         <form className="form" onSubmit={onHandleSubmit}>
           <h2>Create a new post</h2>

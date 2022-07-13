@@ -32,6 +32,7 @@ const Homepage = () => {
           {/*   <div className="right-welcome"></div> */}
         </div>
       )}
+      {/*    <div className="main-welcome"></div> */}
       {loggedUser && <Main />}
     </div>
   );

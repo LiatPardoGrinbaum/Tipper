@@ -2,9 +2,10 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 6rem;
+  min-height: 6rem;
   position: fixed;
   top: 0;
+  background: url("../assets/navbar.JPG") no-repeat center center/cover;
   background: #d2ebe8;
   z-index: 1;
 }
@@ -178,6 +179,7 @@ a.logout.active:hover {
 .category-container .backLink {
   text-decoration: none;
   color: rgb(12, 153, 185);
+  cursor: pointer;
   align-self: flex-start;
   margin: 0.2rem 1rem;
   font-size: 1.1rem;
@@ -338,6 +340,10 @@ a.logout.active:hover {
 }
 .profile-container h1 {
   margin: 1rem 0rem;
+  font-family: "Handlee", cursive;
+}
+.profile-container h2 {
+  font-family: "Handlee", cursive;
 }
 .profile-container span {
   color: rgb(12, 153, 185);
@@ -356,6 +362,10 @@ a.logout.active:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.profile-right {
+  margin-top: 3rem;
 }
 
 .posts-container-profile {
@@ -492,10 +502,10 @@ input::placeholder {
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: bold;
-  color: rgb(219, 105, 17);
+  color: rgb(34, 34, 165);
 }
 .post-container a:hover {
-  color: rgb(12, 153, 185);
+  color: rgb(219, 105, 17);
 }
 .post-container .cat-Link {
   font-size: 1rem;
@@ -506,13 +516,31 @@ input::placeholder {
 .post-container .fa-thumbs-up {
   margin-right: 0.3rem;
 }
-.post-container .createdBy {
+.post-container .post-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.post-container .post-buttons .fa-pen-to-square {
+  color: rgb(50, 144, 50);
+  width: 2rem;
+}
+.post-container .post-buttons .fa-x {
+  color: rgb(199, 71, 71);
+}
+.post-container .createdBy,
+.post-container .updatedAt {
   color: grey;
+  font-size: 0.8rem;
 }
 
 .postImage img {
   border-radius: 50%;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  width: 270px;
+  height: 180px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .postTitle h3 {
@@ -530,22 +558,96 @@ input::placeholder {
 }
 
 .post-page-container {
-  width: 85%;
+  width: 100%;
   margin-top: 6rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  border: 1px solid black;
+}
+.post-page-container .backtoPosts {
+  color: rgb(12, 153, 185);
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: bold;
+  align-self: flex-start;
+  margin: 0.2rem 1rem;
+  cursor: pointer;
 }
 
+.post-page-inner {
+  width: 65%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  border: 1px solid rgb(214, 214, 214);
+  gap: 0.3rem;
+  background: white;
+}
+.post-page-inner h2 {
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+.post-page-inner img {
+  width: 600px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.post-page-inner .createdBy,
+.post-page-inner .updatedAt {
+  color: grey;
+}
+.post-page-inner a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(34, 34, 165);
+}
+.post-page-inner a:hover {
+  color: rgb(219, 105, 17);
+}
+.post-page-inner .post-desc {
+  margin: 1rem 0rem;
+}
+.post-page-inner .post-desc p {
+  text-align: left;
+}
+.post-page-inner .cat-Link {
+  font-size: 1rem;
+}
+.post-page-inner .fa-tags {
+  color: grey;
+}
+.post-page-inner .cat-Link {
+  font-size: 1rem;
+}
+
+@media (max-width: 800px) {
+  .post-page-inner {
+    width: 90%;
+  }
+}
 .updatePost-container {
   width: 100%;
   display: flex;
-  margin-top: 8rem;
+  margin-top: 6rem;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+}
+.updatePost-container .backtoPosts {
+  color: rgb(12, 153, 185);
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: bold;
+  align-self: flex-start;
+  margin: 0.2rem 1rem;
+  cursor: pointer;
 }
 
 .selectbar {
@@ -554,6 +656,13 @@ input::placeholder {
   border: none;
   width: 100%;
   margin-top: 0.5rem;
+}
+
+.user-manager {
+  display: flex;
+  margin: 1rem;
+  gap: 1rem;
+  color: rgb(223, 82, 82);
 }
 
 .App {

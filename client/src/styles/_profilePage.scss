@@ -9,6 +9,10 @@
   flex-direction: column;
   h1 {
     margin: 1rem 0rem;
+    font-family: $titleLogoFont;
+  }
+  h2 {
+    font-family: $titleLogoFont;
   }
   span {
     color: $titleColor;
@@ -29,6 +33,9 @@
   justify-content: center;
   flex-direction: column;
 }
+.profile-right {
+  margin-top: 3rem;
+}
 .posts-container-profile {
   // display: grid;
   // grid-template-columns: repeat(2, 1fr);
@@ -36,6 +43,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
   gap: 2rem;
   padding: 2rem;
 }

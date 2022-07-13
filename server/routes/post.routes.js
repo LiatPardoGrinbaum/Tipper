@@ -18,7 +18,9 @@ postRouter.get("/posts", auth, getAllPosts);
 postRouter.post("/posts/create", auth, upload.single("image"), createPost, (error, req, res, next) => {
   res.status(400).send(error.message);
 });
-postRouter.patch("/posts/:id", auth, updatePost);
+postRouter.patch("/posts/update", auth, upload.single("image"), updatePost, (error, req, res, next) => {
+  res.status(400).send(error.message);
+});
 postRouter.delete("/posts/:id", auth, deletePost);
 postRouter.patch("/like", auth, addOrRemoveLike);
 
