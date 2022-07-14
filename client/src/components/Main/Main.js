@@ -6,6 +6,7 @@ import wellness from "../../assets/categories/wellness.jpg";
 import study from "../../assets/categories/study.jpg";
 import React from "react";
 import { CategoryDiv } from "./CategoryDiv";
+import { NavLink } from "react-router-dom";
 
 export const Main = () => {
   //?maybe- add to different folder of consts and export it
@@ -51,6 +52,15 @@ export const Main = () => {
       </h1>
       <h2>For awesome tips, please select a category:</h2>
       <div className="categories-container">{insertCategories()}</div>
+      <h3>
+        Can't decide?{" "}
+        <NavLink
+          to={{
+            pathname: `/posts/category/all`,
+          }}>
+          To all categories
+        </NavLink>
+      </h3>
     </>
   );
 };

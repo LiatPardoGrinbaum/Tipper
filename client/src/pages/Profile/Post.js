@@ -3,19 +3,39 @@ import { MyContext } from "../../context/MyContext";
 import { useContext, useState } from "react";
 import tipImage from "../../assets/Tip.jpg";
 import API from "../../api/user.api";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 export const Post = ({ postObj }) => {
-  const { loggedUser } = useContext(MyContext);
+  const { loggedUser, setRender } = useContext(MyContext);
   const [likeCounter, setLikeCounter] = useState(postObj.likes.length);
   const [post, setPost] = useState(postObj);
 
-  const port = process.env.PORT || "http://localhost:5050";
+  // const port = process.env.PORT || "http://localhost:5050";
 
-  const onHandleDelete = () => {};
-  // const onHandleUpdate = () => {
-  // setUpdatedMode((prev) => !prev);
-  // setPostToBeUpdated(postObj);
-  // };
+  const onHandleDelete = () => {
+    confirmAlert({
+      title: "Delete alert!",
+      message: "Are you sure delete your tip?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: async () => {
+            await API.delete(`/posts/${postObj._id}`, {
+              headers: {
+                Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+              },
+            });
+            setRender(true);
+          },
+        },
+        {
+          label: "No",
+          // onClick: () => alert("Click No"),
+        },
+      ],
+    });
+  };
 
   const likePost = async () => {
     try {
