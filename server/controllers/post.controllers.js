@@ -14,9 +14,9 @@ export const createPost = async (req, res) => {
       owner: req.user._id,
       ownerName: req.user.name,
     });
-    console.log(req.file);
+
     if (req.file) {
-      newPost.image = req.file.path;
+      newPost.image = req.file.filename;
     }
     await newPost.save();
 
@@ -70,9 +70,9 @@ export const updatePost = async (req, res) => {
   try {
     const updatedPost = req.body;
     if (req.file) {
-      updatedPost.image = req.file.path;
+      updatedPost.image = req.file.filename;
     }
-    console.log(req.file);
+
     const post = await Post.findByIdAndUpdate(
       { _id: req.body.id },
       {

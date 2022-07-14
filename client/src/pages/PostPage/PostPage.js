@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const PostPage = (props) => {
   const [postObj, setPostObj] = useState({});
 
+  const port = process.env.PORT || "http://localhost:5050";
+
   useEffect(() => {
     console.log(props);
     const post = props.location.state;
@@ -18,7 +20,7 @@ const PostPage = (props) => {
       <div className="post-page-inner">
         <h2>{postObj.title}</h2>
 
-        <img src={postObj.image === "null" ? tipImage : postObj.image} alt="tip" />
+        <img src={postObj.image === "null" ? tipImage : `${port}/images/${postObj.image}`} alt="tip" />
 
         <div className="post-desc">
           <p>{postObj.description}</p>

@@ -9,6 +9,8 @@ export const Post = ({ postObj }) => {
   const [likeCounter, setLikeCounter] = useState(postObj.likes.length);
   const [post, setPost] = useState(postObj);
 
+  const port = process.env.PORT || "http://localhost:5050";
+
   const onHandleDelete = () => {};
   // const onHandleUpdate = () => {
   // setUpdatedMode((prev) => !prev);
@@ -36,7 +38,7 @@ export const Post = ({ postObj }) => {
   return (
     <div className="post-container">
       <div className="postImage">
-        <img src={postObj.image === "null" ? tipImage : `http://localhost:5050/${postObj.image}`} alt="tip" />
+        <img src={postObj.image === "null" ? tipImage : `${port}/images/${postObj.image}`} alt="tip" />
       </div>
 
       <div className="postTitle">
