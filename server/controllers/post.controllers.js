@@ -49,18 +49,36 @@ export const getAllMyPosts = async (req, res) => {
 };
 
 //update post created by the logged in user with auth//didnt add the updates allowed cause i will decide in frontend what will be updated.
+// export const updatePost = async (req, res) => {
+//   const updates = Object.keys(req.body);
+//   try {
+//     const post = await Post.findOne({ _id: req.body.id, owner: req.user._id });
+//     if (!post) {
+//       return res.status(404).send();
+//     }
+//     updates.forEach((update) => (post[update] = req.body[update]));
+//     await post.save();
+//     res.send(post);
+//   } catch (error) {
+//     res.status(400).send(error.message);
+//   }
+// };
+
+//other approach for update post including file:
 export const updatePost = async (req, res) => {
-  const updates = Object.keys(req.body);
-  console.log("req.body", req.body);
-  console.log(req.user._id);
   try {
-    const post = await Post.findOne({ _id: req.body.id, owner: req.user._id });
-    console.log("post", post);
-    if (!post) {
-      return res.status(404).send();
+    const updatedPost = req.body;
+    if (req.file) {
+      updatedPost.image = req.file.path;
     }
-    updates.forEach((update) => (post[update] = req.body[update]));
-    await post.save();
+    console.log(req.file);
+    const post = await Post.findByIdAndUpdate(
+      { _id: req.body.id },
+      {
+        $set: updatedPost,
+      },
+      { new: true }
+    );
     res.send(post);
   } catch (error) {
     res.status(400).send(error.message);

@@ -38,8 +38,6 @@ const Login = () => {
   };
 
   if (loggedUser) {
-    console.log(loggedUser);
-    //maybe shall add settimeout (inside spinner?..loggedUser && spinner? )and message to the user that is being directed
     return <Redirect to="/" />;
   }
 

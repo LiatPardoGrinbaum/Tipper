@@ -13,7 +13,7 @@ const UpdatePost = (props) => {
 
   const insertOptions = () => {
     const categories = ["choose category", "Home&Garden", "Fitness", "Food", "Travel", "Wellness", "Study"];
-    const categoryValues = ["home", "fitness", "food", "travel", "wellness", "study"];
+    const categoryValues = ["choose category", "home", "fitness", "food", "travel", "wellness", "study"];
     return categories.map((category, idx) => {
       return (
         <React.Fragment key={idx}>
@@ -39,7 +39,7 @@ const UpdatePost = (props) => {
       updatedPost.append("category", category);
       if (file) updatedPost.append("image", file);
       updatedPost.append("id", props.location.state._id);
-
+      console.log(file);
       await API.patch("posts/update", updatedPost, {
         headers: {
           "content-type": "multipart/form-data",
@@ -59,7 +59,7 @@ const UpdatePost = (props) => {
       setError(err.message);
     }
   };
-
+  console.log(file);
   return (
     <div className="updatePost-container">
       <div className="createPost-container">

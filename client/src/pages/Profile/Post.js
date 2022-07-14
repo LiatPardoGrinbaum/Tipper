@@ -78,7 +78,7 @@ export const Post = ({ postObj }) => {
                 <i className="fa-solid fa-pen-to-square "></i>
               </Link>
 
-              <i class="fa-regular fa-trash-can" onClick={onHandleDelete}></i>
+              <i className="fa-regular fa-trash-can" onClick={onHandleDelete}></i>
 
               {/*  <Link to={{ pathname: "/update/post", state: postObj }}>
                 <button className="btn">Update</button>

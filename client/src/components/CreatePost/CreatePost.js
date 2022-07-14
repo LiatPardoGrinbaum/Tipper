@@ -59,6 +59,7 @@ const CreatePost = () => {
       setError(err.response.data);
     }
   };
+  console.log(file);
   return (
     <div className="createPost-container">
       <form className="form" onSubmit={onHandleSubmit}>
