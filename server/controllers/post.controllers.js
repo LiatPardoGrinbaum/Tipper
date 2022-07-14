@@ -14,6 +14,7 @@ export const createPost = async (req, res) => {
       owner: req.user._id,
       ownerName: req.user.name,
     });
+    console.log(req.file);
     if (req.file) {
       newPost.image = req.file.path;
     }

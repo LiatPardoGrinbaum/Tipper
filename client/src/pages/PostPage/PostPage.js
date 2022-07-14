@@ -18,7 +18,7 @@ const PostPage = (props) => {
       <div className="post-page-inner">
         <h2>{postObj.title}</h2>
 
-        <img src={postObj.image === "null" ? tipImage : `http://localhost:5050/${postObj.image}`} alt="tip" />
+        <img src={postObj.image === "null" ? tipImage : postObj.image} alt="tip" />
 
         <div className="post-desc">
           <p>{postObj.description}</p>
