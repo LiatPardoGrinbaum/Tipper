@@ -136,7 +136,7 @@ export const getAllPosts = async (req, res) => {
     console.log(matchQuery);
     if (req.user) {
       //if user authenticate. not anyone can see.
-      if (matchQuery !== "all") {
+      if (matchQuery) {
         const posts = await Post.find({ category: matchQuery });
 
         res.status(200).send(posts);

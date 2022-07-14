@@ -5,7 +5,7 @@ import { MyContext } from "../../context/MyContext";
 
 const CreatePost = () => {
   const inputRef = useRef(null);
-  const { setRender, setSpinner } = useContext(MyContext);
+  const { setRender } = useContext(MyContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -30,7 +30,7 @@ const CreatePost = () => {
 
   const onHandleSubmit = async (e) => {
     setError(null);
-    setSpinner(true);
+
     e.preventDefault();
     //spinner?
     try {
@@ -54,7 +54,6 @@ const CreatePost = () => {
       setFile(null);
       inputRef.current.value = null;
       setRender(true); //for profile component to render
-      setSpinner(false);
     } catch (err) {
       console.log(err);
       setError(err.response.data);
