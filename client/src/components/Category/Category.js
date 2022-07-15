@@ -15,10 +15,15 @@ const Category = (props) => {
     // console.log(id);
     setSpinner(true);
     let categoryName = props.match.params.id;
-    console.log(categoryName);
+    let url = "";
+    if (categoryName) {
+      url = `/posts?category=${categoryName}`;
+    } else {
+      url = "/posts";
+    }
     try {
       const getData = async () => {
-        const { data } = await API.get(`/posts?category=${categoryName}`, {
+        const { data } = await API.get(url, {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
           },

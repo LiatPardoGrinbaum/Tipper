@@ -60,6 +60,7 @@ const Profile = () => {
         </div>
         <div className="profile-right">
           <CreatePost />
+
           <UserManager />
         </div>
       </div>

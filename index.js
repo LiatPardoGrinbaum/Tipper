@@ -3,8 +3,6 @@ import { app } from "./server/app.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import express from "express";
-import { User } from "./server/models/user.model.js";
-import { Post } from "./server/models/post.model.js";
 
 const fileName = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(fileName);

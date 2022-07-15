@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const UserManager = () => {
   return (
     <div className="user-manager">
-      <Link to="/">
+      <Link to="/user/update">
         <button className="btn">Update my account</button>
       </Link>
       <button className="btn" style={{ color: "rgb(223, 82, 82)" }}>

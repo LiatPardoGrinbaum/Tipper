@@ -37,10 +37,10 @@ const Signup = () => {
       setError(err.response.data);
     }
   };
-  if (loggedUser) {
-    console.log(loggedUser);
-    return <Redirect to="/" />;
-  }
+  // if (loggedUser) {
+  //   console.log(loggedUser);
+  //   return <Redirect to="/" />;
+  // }
 
   return (
     <div className="signup-container">

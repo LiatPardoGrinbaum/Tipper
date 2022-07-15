@@ -58,7 +58,7 @@ export const Post = ({ postObj }) => {
   return (
     <div className="post-container">
       <div className="postImage">
-        <img src={postObj.image === "null" ? tipImage : `/images/${postObj.image}`} alt="tip" />
+        <img src={postObj.image === "null" ? tipImage : `${postObj.image}`} alt="tip" />
       </div>
 
       <div className="postTitle">

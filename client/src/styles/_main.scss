@@ -18,6 +18,17 @@
     margin: 1rem 0rem 3rem 0rem;
     color: $titleColor;
   }
+  h3 {
+    margin-top: 3rem;
+    color: $titleColor;
+    a {
+      text-decoration: none;
+      color: orange;
+      &:hover {
+        color: rgb(80, 215, 245);
+      }
+    }
+  }
   span {
     color: orange;
     font-family: "Handlee", cursive;

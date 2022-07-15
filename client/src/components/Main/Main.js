@@ -56,7 +56,7 @@ export const Main = () => {
         Can't decide?{" "}
         <NavLink
           to={{
-            pathname: `/posts/category/all`,
+            pathname: `/allcategories`,
           }}>
           To all categories
         </NavLink>

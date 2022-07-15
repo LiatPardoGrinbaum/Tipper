@@ -10,6 +10,7 @@ import Profile from "./pages/Profile/Profile";
 import PostPage from "./pages/PostPage/PostPage";
 import UpdatePost from "./pages/UpdatePage/UpdatePost";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import UpdateUser from "./pages/UpdateUser/UpdateUser";
 
 function App() {
   return (
@@ -25,8 +26,10 @@ function App() {
             <Route path="/posts/category/:id" component={Category} />
             <Route path="/profile" component={Profile} />
             <Route path="/posts/:id" component={PostPage} />
-
             <Route path="/update/post" component={UpdatePost} />
+            <Route path="/allcategories" component={Category} />
+
+            <Route path="/user/update" component={UpdateUser} />
             {/*    <Route path="/update/user" component={UpdateUser} /> */}
           </Switch>
         </div>

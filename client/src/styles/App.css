@@ -98,6 +98,17 @@ a.logout.active:hover {
   margin: 1rem 0rem 3rem 0rem;
   color: rgb(12, 153, 185);
 }
+.mainPage h3 {
+  margin-top: 3rem;
+  color: rgb(12, 153, 185);
+}
+.mainPage h3 a {
+  text-decoration: none;
+  color: orange;
+}
+.mainPage h3 a:hover {
+  color: rgb(80, 215, 245);
+}
 .mainPage span {
   color: orange;
   font-family: "Handlee", cursive;
@@ -664,6 +675,24 @@ input::placeholder {
   margin: 1rem;
   gap: 1rem;
   color: rgb(223, 82, 82);
+}
+
+.updateAccount-container {
+  width: 100%;
+  display: flex;
+  margin-top: 8rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.updateAccount-container .backtoPosts {
+  color: rgb(12, 153, 185);
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: bold;
+  align-self: flex-start;
+  margin: 0.2rem 1rem;
+  cursor: pointer;
 }
 
 .App {
