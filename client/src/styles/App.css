@@ -86,6 +86,8 @@ a.logout.active:hover {
   .navbar-inner {
     justify-content: center;
     margin-bottom: 1rem;
+    justify-content: space-between;
+    margin: 0rem;
   }
   .logo {
     font-weight: bold;
@@ -96,12 +98,6 @@ a.logout.active:hover {
     display: none;
   }
   .right-container {
-    margin: 0rem;
-  }
-}
-@media (max-width: 400px) {
-  .navbar-inner {
-    justify-content: space-between;
     margin: 0rem;
   }
 }

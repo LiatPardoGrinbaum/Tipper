@@ -54,6 +54,7 @@ export const getAllUsers = async (req, res) => {
 //patch only update partial data sent by the client, now i want it to change only name and later- picture
 // can I use put instead with the same code?
 export const updateUser = async (req, res) => {
+  if (!req.body.email || !req.body.name) throw new Error("Please fill all fields.");
   const updates = Object.keys(req.body);
   const allowedUpdates = ["name", "email"];
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update));

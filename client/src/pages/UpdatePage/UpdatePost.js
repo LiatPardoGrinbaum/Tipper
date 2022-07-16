@@ -75,7 +75,8 @@ const UpdatePost = (props) => {
       inputRef.current.value = null;
     } catch (err) {
       console.log(err);
-      setError(err.message);
+      setError(err.response.data);
+      setIsUpdating(false);
     }
   };
   console.log(file);
@@ -83,7 +84,7 @@ const UpdatePost = (props) => {
     <div className="updatePost-container">
       <div className="createPost-container">
         <form className="form" onSubmit={onHandleSubmit}>
-          <h2>Create a new post</h2>
+          <h2>Update your post</h2>
 
           <Input
             label="Title:"
@@ -136,10 +137,10 @@ const UpdatePost = (props) => {
           </button>
         </form>
         {isUpdating && <span>Updating your tip...</span>}
+        {error && <div style={{ color: "red" }}>{error}</div>}
         <p className="backtoPosts" onClick={() => props.history.goBack()}>
           Back
         </p>
-        {error && <div style={{ color: "red" }}>{error}</div>}
       </div>
     </div>
   );

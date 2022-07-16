@@ -6,6 +6,7 @@ export const createPost = async (req, res) => {
   console.log(req.body);
   try {
     if (!req.body.title || !req.body.description || !req.body.category) throw new Error("Please fill all fields.");
+    if (req.body.category === "choose category") throw new Error("Please choose valid category.");
     if (req.body.title.length > 100) throw new Error("Title has maximum number of charecters allowed of 100.");
     if (req.body.description.length > 1000)
       throw new Error("Description has maximum number of charecters allowed of 1000.");
@@ -68,6 +69,8 @@ export const getAllMyPosts = async (req, res) => {
 //other approach for update post including file:
 export const updatePost = async (req, res) => {
   try {
+    if (!req.body.title || !req.body.description || !req.body.category) throw new Error("Please fill all fields.");
+    if (req.body.category === "choose category") throw new Error("Please choose valid category.");
     const updatedPost = req.body;
     if (req.file) {
       updatedPost.image = req.file.filename;
@@ -137,11 +140,11 @@ export const getAllPosts = async (req, res) => {
     if (req.user) {
       //if user authenticate. not anyone can see.
       if (matchQuery) {
-        const posts = await Post.find({ category: matchQuery });
+        const posts = await Post.find({ category: matchQuery }).sort({ updatedAt: -1 }).exec();
 
         res.status(200).send(posts);
       }
-      const posts = await Post.find({});
+      const posts = await Post.find({}).sort({ updatedAt: -1 }).exec();
       // const posts = await Post.find({}).limit(3).exec();
       res.status(200).send(posts);
     }

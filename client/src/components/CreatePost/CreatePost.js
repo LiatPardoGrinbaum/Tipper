@@ -11,6 +11,7 @@ const CreatePost = () => {
   const [category, setCategory] = useState("");
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const insertOptions = () => {
     const categories = ["choose category", "Home&Garden", "Fitness", "Food", "Travel", "Wellness", "Study"];
@@ -30,7 +31,7 @@ const CreatePost = () => {
 
   const onHandleSubmit = async (e) => {
     setError(null);
-
+    setIsUpdating(true);
     e.preventDefault();
     //spinner?
     try {
@@ -60,6 +61,7 @@ const CreatePost = () => {
       });
 
       alert("Your tip was published successfuly!");
+      setIsUpdating(false);
       setTitle("");
       setDescription("");
       setCategory("");
@@ -69,6 +71,7 @@ const CreatePost = () => {
     } catch (err) {
       console.log(err);
       setError(err.response.data);
+      setIsUpdating(false);
     }
   };
   console.log(file);
@@ -117,10 +120,15 @@ const CreatePost = () => {
             }}
           />
         </div>
-        <button className="btn" type="submit">
+        <button
+          className="btn"
+          type="submit"
+          disabled={isUpdating ? true : false}
+          style={isUpdating ? { color: "lightgrey" } : { color: "rgb(70, 69, 69)" }}>
           Add your tip
         </button>
       </form>
+      {isUpdating && <span>Creating your tip...</span>}
       {error && <div style={{ color: "red" }}>{error}</div>}
     </div>
   );

@@ -10,17 +10,20 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [error, setError] = useState("");
+  const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
     if (updatedMode) {
       setName(loggedUser.name);
       setEmail(loggedUser.email);
+      // console.log("updatemode on");
     }
-  }, []);
+  }, [updatedMode]);
 
   const onHandleSumbit = async (e) => {
     e.preventDefault();
     setSpinner(true);
+
     if (!updatedMode) {
       const newUser = {
         name,
@@ -44,6 +47,7 @@ const Signup = () => {
         setError(err.response.data);
       }
     } else {
+      setIsUpdating(true);
       const updatedUser = {
         name,
         email,
@@ -55,6 +59,7 @@ const Signup = () => {
           },
         });
         setLoggedUser(data);
+        setIsUpdating(false);
         localStorage.setItem("user", JSON.stringify(data));
 
         window.location.replace("/profile");
@@ -62,6 +67,7 @@ const Signup = () => {
       } catch (err) {
         console.log(err);
         setError(err.response.data);
+        setIsUpdating(false);
       }
     }
   };
@@ -70,6 +76,7 @@ const Signup = () => {
   //   return <Redirect to="/" />;
   // }
   console.log("updatedMode", updatedMode);
+  console.log(name);
   return (
     <div className="signup-container">
       <h1>{updatedMode ? "Update my details" : "Sign Up"}</h1>
@@ -115,8 +122,14 @@ const Signup = () => {
             }}
           />
         )}
-        <button className="login-btn">{updatedMode ? "Update" : "Create new account"}</button>
+        <button
+          className="login-btn"
+          disabled={isUpdating ? true : false}
+          style={isUpdating ? { backgroundColor: "lightgrey" } : { backgroundColor: "rgb(118, 118, 160)" }}>
+          {updatedMode ? "Update" : "Create new account"}
+        </button>
       </form>
+      {isUpdating && <span>Updating your tip...</span>}
       {error && <div style={{ color: "red" }}>{error}</div>}
       {updatedMode && (
         <Link to="/profile">
