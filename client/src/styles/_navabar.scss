@@ -114,26 +114,4 @@ a.logout.active {
     justify-content: space-between;
     margin: 0rem;
   }
-  .right-container a {
-    padding: 0.5rem 0.5rem;
-    margin: 0px 0.2rem;
-    text-decoration: none;
-    color: $primaryLinkColor;
-    font-size: 0.9rem;
-    font-weight: bold;
-    transition: 0.3s;
-    // border-bottom: 0.5px solid transparent;
-    width: 5rem;
-    // border: 0.5px solid transparent;
-    background: $navbarHoverColor;
-    border-radius: 1.2rem;
-    &:hover {
-      color: $navbarHoverColor;
-      background: rgb(12, 153, 185);
-    }
-    &.active {
-      background: rgb(12, 153, 185);
-      color: $navbarHoverColor;
-    }
-  }
 }

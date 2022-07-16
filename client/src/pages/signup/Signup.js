@@ -22,11 +22,11 @@ const Signup = () => {
     e.preventDefault();
     setSpinner(true);
     if (!updatedMode) {
-      if (password !== confirmPass) throw new Error("Passwords aren't matched.");
       const newUser = {
         name,
         email,
         password,
+        confirmPass,
       };
       try {
         const { data } = await API.post("/users/register", newUser);

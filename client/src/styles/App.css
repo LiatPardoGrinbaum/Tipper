@@ -104,26 +104,6 @@ a.logout.active:hover {
     justify-content: space-between;
     margin: 0rem;
   }
-  .right-container a {
-    padding: 0.5rem 0.5rem;
-    margin: 0px 0.2rem;
-    text-decoration: none;
-    color: rgb(70, 69, 69);
-    font-size: 0.9rem;
-    font-weight: bold;
-    transition: 0.3s;
-    width: 5rem;
-    background: rgb(247, 239, 227);
-    border-radius: 1.2rem;
-  }
-  .right-container a:hover {
-    color: rgb(247, 239, 227);
-    background: rgb(12, 153, 185);
-  }
-  .right-container a.active {
-    background: rgb(12, 153, 185);
-    color: rgb(247, 239, 227);
-  }
 }
 .mainPage {
   width: 100%;
@@ -446,7 +426,7 @@ a.logout.active:hover {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: 2rem 0rem;
 }
 
 @media (max-width: 880px) {

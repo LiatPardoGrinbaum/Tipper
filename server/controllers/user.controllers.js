@@ -3,6 +3,7 @@ import { User } from "../models/user.model.js";
 //register/sign-up (create new user)
 export const register = async (req, res) => {
   try {
+    if (req.body.password !== req.body.confirmPass) throw new Error("Passwords do not match");
     const userBodyToSave = req.body;
     const newUSer = new User(userBodyToSave);
     const savedUser = await newUSer.save();
