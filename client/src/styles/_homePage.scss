@@ -5,8 +5,8 @@
   // height: 18rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  // margin-top: 6rem;
+  justify-content: flex-start;
+  margin-top: 10rem;
   flex-direction: column;
   // background: url("../../assets/17545.jpg") no-repeat center center/cover;
 }
@@ -14,11 +14,13 @@
 .welcome {
   width: 60%;
   min-height: 25rem;
+  margin-bottom: 2rem;
   // box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
-  display: grid;
-
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   border-radius: 2rem;
-  grid-template-columns: repeat(2, 1fr);
 }
 
 .left-welcome {

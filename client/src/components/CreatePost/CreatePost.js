@@ -35,8 +35,6 @@ const CreatePost = () => {
     //spinner?
     try {
       const { url } = await fetch("/api/s3Url").then((res) => res.json());
-      console.log(url);
-      console.log("url", url);
       // post the image direclty to the s3 bucket
       await fetch(url, {
         method: "PUT",
@@ -47,14 +45,13 @@ const CreatePost = () => {
       });
 
       const imageUrl = url.split("?")[0];
-      console.log("imageUrl", imageUrl);
 
       const formData = new FormData();
       formData.append("title", title);
       formData.append("description", description);
       formData.append("category", category);
-      formData.append("image", imageUrl);
-      console.log("formdata", formData);
+      file ? formData.append("image", imageUrl) : formData.append("image", null);
+
       await API.post("posts/create", formData, {
         headers: {
           "content-type": "multipart/form-data",

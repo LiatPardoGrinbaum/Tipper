@@ -17,6 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin: 0rem 2rem;
   // border-bottom: 2px solid rgb(195, 195, 195);
   // box-shadow: rgba(33, 35, 38, 0.337) 0px 10px 10px -10px;
@@ -85,4 +86,54 @@ a.logout.active {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .navbar-inner {
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .logo {
+    font-weight: bold;
+    color: #c8fafa;
+    margin-left: 0rem;
+    .logo-link {
+      div {
+        display: none;
+      }
+    }
+  }
+
+  .right-container {
+    margin: 0rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar-inner {
+    justify-content: space-between;
+    margin: 0rem;
+  }
+  .right-container a {
+    padding: 0.5rem 0.5rem;
+    margin: 0px 0.2rem;
+    text-decoration: none;
+    color: $primaryLinkColor;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: 0.3s;
+    // border-bottom: 0.5px solid transparent;
+    width: 5rem;
+    // border: 0.5px solid transparent;
+    background: $navbarHoverColor;
+    border-radius: 1.2rem;
+    &:hover {
+      color: $navbarHoverColor;
+      background: rgb(12, 153, 185);
+    }
+    &.active {
+      background: rgb(12, 153, 185);
+      color: $navbarHoverColor;
+    }
+  }
 }

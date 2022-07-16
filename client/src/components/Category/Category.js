@@ -39,10 +39,9 @@ const Category = (props) => {
       console.log(err);
     }
   }, [props, setRender, render, setSpinner]);
-  console.log(term);
+
   const insertPosts = () => {
     const filteredPosts = posts.filter((post) => {
-      console.log("post", post.title);
       return (
         post.title.toLowerCase().includes(term.toLowerCase()) ||
         post.ownerName.toLowerCase().includes(term.toLowerCase())

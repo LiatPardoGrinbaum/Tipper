@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin: 0rem 2rem;
 }
 
@@ -81,6 +82,49 @@ a.logout.active:hover {
   justify-content: center;
 }
 
+@media (max-width: 600px) {
+  .navbar-inner {
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .logo {
+    font-weight: bold;
+    color: #c8fafa;
+    margin-left: 0rem;
+  }
+  .logo .logo-link div {
+    display: none;
+  }
+  .right-container {
+    margin: 0rem;
+  }
+}
+@media (max-width: 400px) {
+  .navbar-inner {
+    justify-content: space-between;
+    margin: 0rem;
+  }
+  .right-container a {
+    padding: 0.5rem 0.5rem;
+    margin: 0px 0.2rem;
+    text-decoration: none;
+    color: rgb(70, 69, 69);
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 5rem;
+    background: rgb(247, 239, 227);
+    border-radius: 1.2rem;
+  }
+  .right-container a:hover {
+    color: rgb(247, 239, 227);
+    background: rgb(12, 153, 185);
+  }
+  .right-container a.active {
+    background: rgb(12, 153, 185);
+    color: rgb(247, 239, 227);
+  }
+}
 .mainPage {
   width: 100%;
   display: flex;
@@ -100,6 +144,7 @@ a.logout.active:hover {
 }
 .mainPage h3 {
   margin-top: 3rem;
+  margin-bottom: 2rem;
   color: rgb(12, 153, 185);
 }
 .mainPage h3 a {
@@ -117,8 +162,8 @@ a.logout.active:hover {
 
 .categories-container {
   width: 85%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 12rem);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
   justify-content: center;
@@ -288,16 +333,20 @@ a.logout.active:hover {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 10rem;
   flex-direction: column;
 }
 
 .welcome {
   width: 60%;
   min-height: 25rem;
-  display: grid;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   border-radius: 2rem;
-  grid-template-columns: repeat(2, 1fr);
 }
 
 .left-welcome {
@@ -400,9 +449,12 @@ a.logout.active:hover {
   padding: 2rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 880px) {
   .profile-inner {
     flex-direction: column-reverse;
+  }
+  .profile-inner {
+    align-items: center;
   }
 }
 .login-container {
@@ -626,6 +678,7 @@ input::placeholder {
   margin-bottom: 0.5rem;
 }
 .post-page-inner img {
+  max-width: 100%;
   width: 600px;
   height: 300px;
   -o-object-fit: cover;
@@ -664,6 +717,15 @@ input::placeholder {
 @media (max-width: 800px) {
   .post-page-inner {
     width: 90%;
+  }
+}
+@media (max-width: 600px) {
+  .post-page-inner {
+    width: 90%;
+  }
+  .post-page-inner img {
+    width: 400px;
+    height: 200px;
   }
 }
 .updatePost-container {

@@ -15,9 +15,9 @@ export const createPost = async (req, res) => {
       ownerName: req.user.name,
     });
 
-    if (req.file) {
-      newPost.image = req.file.filename;
-    }
+    // if (req.file) {
+    //   newPost.image = req.file.filename;
+    // }
     await newPost.save();
 
     res.status(201).send(newPost);

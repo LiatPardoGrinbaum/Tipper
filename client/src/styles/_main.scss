@@ -20,6 +20,7 @@
   }
   h3 {
     margin-top: 3rem;
+    margin-bottom: 2rem;
     color: $titleColor;
     a {
       text-decoration: none;
@@ -42,9 +43,10 @@
 // }
 .categories-container {
   width: 85%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 12rem);
-
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, 12rem);
+  display: flex;
+  flex-wrap: wrap;
   // grid-auto-rows: auto;
   gap: 1rem;
   align-items: center;

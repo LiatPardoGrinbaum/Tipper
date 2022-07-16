@@ -7,11 +7,13 @@ import API from "../../api/user.api";
 import CreatePost from "../../components/CreatePost/CreatePost";
 
 const Profile = () => {
-  const { myPosts, setMyPosts, setSpinner, spinner, setRender, render, loggedUser } = useContext(MyContext);
+  const { myPosts, setMyPosts, setSpinner, spinner, setRender, render, loggedUser, setUpdatedMode } =
+    useContext(MyContext);
   // const [error, setError] = useState("");
   const [term, setTerm] = useState("");
   useEffect(() => {
     setRender(false);
+    setUpdatedMode(false); //need it to reset updatedmode if I come back from updateUser form without submitting
     setSpinner(true);
     try {
       const getData = async () => {
@@ -31,11 +33,10 @@ const Profile = () => {
       // setError(err.response.data);
     }
     setSpinner(true);
-  }, [setMyPosts, render, setRender, setSpinner]);
+  }, [setMyPosts, render, setRender, setSpinner, setUpdatedMode]);
 
   const insertMyPosts = () => {
     const filteredPosts = myPosts.filter((post) => {
-      console.log("post", post.title);
       return (
         post.title.toLowerCase().includes(term.toLowerCase()) ||
         post.ownerName.toLowerCase().includes(term.toLowerCase())
@@ -49,6 +50,7 @@ const Profile = () => {
       );
     });
   };
+
   return (
     <div className="profile-container">
       <div className="profile-inner">

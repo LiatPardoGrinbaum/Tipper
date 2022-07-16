@@ -33,7 +33,8 @@
   }
 
   img {
-    // max-width: 100%;
+    max-width: 100%;
+
     // height: auto;
     width: 600px;
     height: 300px;
@@ -74,5 +75,15 @@
 @media (max-width: 800px) {
   .post-page-inner {
     width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .post-page-inner {
+    width: 90%;
+    img {
+      width: 400px;
+      height: 200px;
+    }
   }
 }

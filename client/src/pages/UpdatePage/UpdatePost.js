@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import API from "../../api/user.api";
 import Input from "../../components/Input/Input";
 
@@ -10,6 +10,7 @@ const UpdatePost = (props) => {
   const [category, setCategory] = useState(props.location.state.category);
   const [file, setFile] = useState(props.location.state.image);
   const [error, setError] = useState(null);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const insertOptions = () => {
     const categories = ["choose category", "Home&Garden", "Fitness", "Food", "Travel", "Wellness", "Study"];
@@ -28,16 +29,33 @@ const UpdatePost = (props) => {
   // };
 
   const onHandleSubmit = async (e) => {
+    setIsUpdating(true);
     setError(null);
     // setRender(false);
     e.preventDefault();
     //spinner?
     try {
+      const { url } = await fetch("/api/s3Url").then((res) => res.json());
+      console.log(url);
+      console.log("url", url);
+      // post the image direclty to the s3 bucket
+      await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body: file,
+      });
+
+      const imageUrl = url.split("?")[0];
+
       const updatedPost = new FormData();
       updatedPost.append("title", title);
       updatedPost.append("description", description);
       updatedPost.append("category", category);
-      if (file) updatedPost.append("image", file);
+      file === props.location.state.image
+        ? updatedPost.append("image", props.location.state.image)
+        : updatedPost.append("image", imageUrl);
       updatedPost.append("id", props.location.state._id);
       console.log(file);
       await API.patch("posts/update", updatedPost, {
@@ -48,6 +66,7 @@ const UpdatePost = (props) => {
       });
 
       alert("Your tip was updated successfuly!");
+      setIsUpdating(false);
       setTitle("");
       setDescription("");
       setCategory("");
@@ -108,10 +127,15 @@ const UpdatePost = (props) => {
               }}
             />
           </div>
-          <button className="btn" type="submit">
+          <button
+            className="btn"
+            type="submit"
+            disabled={isUpdating ? true : false}
+            style={isUpdating ? { color: "lightgrey" } : { color: "rgb(70, 69, 69)" }}>
             Update post
           </button>
         </form>
+        {isUpdating && <span>Updating your tip...</span>}
         <p className="backtoPosts" onClick={() => props.history.goBack()}>
           Back
         </p>

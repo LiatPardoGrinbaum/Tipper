@@ -69,7 +69,7 @@ const Signup = () => {
   //   console.log(loggedUser);
   //   return <Redirect to="/" />;
   // }
-
+  console.log("updatedMode", updatedMode);
   return (
     <div className="signup-container">
       <h1>{updatedMode ? "Update my details" : "Sign Up"}</h1>
