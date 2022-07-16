@@ -1,40 +1,68 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import API from "../../api/user.api";
-import { Redirect } from "react-router-dom";
 import { MyContext } from "../../context/MyContext";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
-  const { loggedUser, setLoggedUser, setToken, setSpinner } = useContext(MyContext);
+  const { loggedUser, setLoggedUser, setToken, setSpinner, updatedMode, setUpdatedMode } = useContext(MyContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [error, setError] = useState("");
 
-  //!need to add password confirmation validation
-  //!
+  useEffect(() => {
+    if (updatedMode) {
+      setName(loggedUser.name);
+      setEmail(loggedUser.email);
+    }
+  }, []);
+
   const onHandleSumbit = async (e) => {
     e.preventDefault();
     setSpinner(true);
-    const newUser = {
-      name,
-      email,
-      password,
-    };
-    try {
-      const { data } = await API.post("/users/register", newUser);
-      setEmail("");
-      setName("");
-      setPassword("");
-      setConfirmPass("");
-      localStorage.setItem("token", JSON.stringify(data.token));
-      localStorage.setItem("user", JSON.stringify(data.savedUser));
-      setLoggedUser(data.savedUser);
-      setToken(data.token);
-      setSpinner(false);
-    } catch (err) {
-      console.log(err);
-      setError(err.response.data);
+    if (!updatedMode) {
+      if (password !== confirmPass) throw new Error("Passwords aren't matched.");
+      const newUser = {
+        name,
+        email,
+        password,
+      };
+      try {
+        const { data } = await API.post("/users/register", newUser);
+        setEmail("");
+        setName("");
+        setPassword("");
+        setConfirmPass("");
+        localStorage.setItem("token", JSON.stringify(data.token));
+        localStorage.setItem("user", JSON.stringify(data.savedUser));
+        setLoggedUser(data.savedUser);
+        setToken(data.token);
+        setSpinner(false);
+      } catch (err) {
+        console.log(err);
+        setError(err.response.data);
+      }
+    } else {
+      const updatedUser = {
+        name,
+        email,
+      };
+      try {
+        const { data } = await API.patch("/users/me", updatedUser, {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          },
+        });
+        setLoggedUser(data);
+        localStorage.setItem("user", JSON.stringify(data));
+
+        window.location.replace("/profile");
+        setUpdatedMode(false);
+      } catch (err) {
+        console.log(err);
+        setError(err.response.data);
+      }
     }
   };
   // if (loggedUser) {
@@ -44,7 +72,7 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
-      <h1>Sign Up</h1>
+      <h1>{updatedMode ? "Update my details" : "Sign Up"}</h1>
       <hr></hr>
       <form onSubmit={onHandleSumbit}>
         <input
@@ -65,26 +93,36 @@ const Signup = () => {
             setEmail(e.target.value);
           }}
         />
-        <input
-          type="password"
-          id="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <input
-          type="password"
-          id="confirm-password"
-          placeholder="Confirm password"
-          value={confirmPass}
-          onChange={(e) => {
-            setConfirmPass(e.target.value);
-          }}
-        />
-        <button className="login-btn">Create new account</button>
+        {!updatedMode && (
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        )}
+        {!updatedMode && (
+          <input
+            type="password"
+            id="confirm-password"
+            placeholder="Confirm password"
+            value={confirmPass}
+            onChange={(e) => {
+              setConfirmPass(e.target.value);
+            }}
+          />
+        )}
+        <button className="login-btn">{updatedMode ? "Update" : "Create new account"}</button>
       </form>
+      {error && <div style={{ color: "red" }}>{error}</div>}
+      {updatedMode && (
+        <Link to="/profile">
+          <p className="backtoPosts">Back</p>
+        </Link>
+      )}
     </div>
   );
 };

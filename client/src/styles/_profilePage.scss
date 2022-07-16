@@ -17,6 +17,19 @@
   span {
     color: $titleColor;
   }
+  .searchBar {
+    margin-top: 1rem;
+    width: 100%;
+
+    input {
+      padding-left: 0.4rem;
+      margin: 0.2rem;
+      border-radius: 0.5rem;
+      width: 80%;
+      height: 2rem;
+      border: 0.5px grey solid;
+    }
+  }
 }
 .profile-inner {
   width: 90%;

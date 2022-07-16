@@ -359,6 +359,18 @@ a.logout.active:hover {
 .profile-container span {
   color: rgb(12, 153, 185);
 }
+.profile-container .searchBar {
+  margin-top: 1rem;
+  width: 100%;
+}
+.profile-container .searchBar input {
+  padding-left: 0.4rem;
+  margin: 0.2rem;
+  border-radius: 0.5rem;
+  width: 80%;
+  height: 2rem;
+  border: 0.5px grey solid;
+}
 
 .profile-inner {
   width: 90%;
@@ -425,6 +437,15 @@ a.logout.active:hover {
 }
 .signup-container h1 {
   color: rgb(73, 73, 101);
+}
+.signup-container a {
+  color: rgb(12, 153, 185);
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: bold;
+  align-self: flex-start;
+  margin: 0.2rem 1rem;
+  cursor: pointer;
 }
 
 .login-container > h1 {
@@ -539,6 +560,7 @@ input::placeholder {
 .post-container .post-buttons .fa-trash-can {
   color: rgb(199, 71, 71);
   font-size: 1.4rem;
+  cursor: pointer;
 }
 .post-container .createdBy,
 .post-container .updatedAt {

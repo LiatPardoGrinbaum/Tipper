@@ -16,7 +16,7 @@ export const Post = ({ postObj }) => {
   const onHandleDelete = () => {
     confirmAlert({
       title: "Delete alert!",
-      message: "Are you sure delete your tip?",
+      message: "Are you sure you want to delete your tip?",
       buttons: [
         {
           label: "Yes",
@@ -101,13 +101,6 @@ export const Post = ({ postObj }) => {
               </Link>
 
               <i className="fa-regular fa-trash-can" onClick={onHandleDelete}></i>
-
-              {/*  <Link to={{ pathname: "/update/post", state: postObj }}>
-                <button className="btn">Update</button>
-              </Link>
-              <button className="btn" onClick={onHandleDelete}>
-                delete
-              </button> */}
             </div>
           )}
         </div>

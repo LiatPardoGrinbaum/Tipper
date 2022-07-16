@@ -54,7 +54,7 @@ export const getAllUsers = async (req, res) => {
 // can I use put instead with the same code?
 export const updateUser = async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ["name"];
+  const allowedUpdates = ["name", "email"];
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
   if (!isValidOperation) {

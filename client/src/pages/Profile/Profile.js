@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { UserManager } from "./UserManager";
 import { Spinner } from "../../components/Spinner/spinner";
 import { MyContext } from "../../context/MyContext";
@@ -9,7 +9,7 @@ import CreatePost from "../../components/CreatePost/CreatePost";
 const Profile = () => {
   const { myPosts, setMyPosts, setSpinner, spinner, setRender, render, loggedUser } = useContext(MyContext);
   // const [error, setError] = useState("");
-
+  const [term, setTerm] = useState("");
   useEffect(() => {
     setRender(false);
     setSpinner(true);
@@ -34,7 +34,14 @@ const Profile = () => {
   }, [setMyPosts, render, setRender, setSpinner]);
 
   const insertMyPosts = () => {
-    return myPosts.map((postObj) => {
+    const filteredPosts = myPosts.filter((post) => {
+      console.log("post", post.title);
+      return (
+        post.title.toLowerCase().includes(term.toLowerCase()) ||
+        post.ownerName.toLowerCase().includes(term.toLowerCase())
+      );
+    });
+    return filteredPosts.map((postObj) => {
       return (
         <React.Fragment key={postObj._id}>
           <Post postObj={postObj} />
@@ -51,9 +58,19 @@ const Profile = () => {
           ) : (
             <div>
               <h1>
-                Welcome, <span>{loggedUser && loggedUser.name}</span>
+                Hello, <span>{loggedUser && loggedUser.name}</span>
               </h1>
               <h2>My tips:</h2>
+              <div className="searchBar">
+                <input
+                  type="text"
+                  placeholder="search..."
+                  value={term}
+                  onChange={(e) => {
+                    setTerm(e.target.value);
+                  }}
+                />
+              </div>
               <div className="posts-container-profile">{insertMyPosts()}</div>
             </div>
           )}
