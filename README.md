@@ -17,7 +17,7 @@ view the content of the tip by clicking the title's link.
 
 ## Technologies
 
-- Frontend: HTML, CSSS (SASS), ReactJS.
+- Frontend: HTML, CSS (SASS), ReactJS.
 - Backend: NodeJS, Express, MongoDB, Mongoose, Amazon S3 storage service.
 - Heroku deployment
 
