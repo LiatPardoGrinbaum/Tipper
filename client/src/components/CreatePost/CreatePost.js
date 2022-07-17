@@ -78,7 +78,7 @@ const CreatePost = () => {
   return (
     <div className="createPost-container">
       <form className="form" onSubmit={onHandleSubmit}>
-        <h2>Create a new post</h2>
+        <h2>Create a new tip</h2>
 
         <Input
           label="Title:"

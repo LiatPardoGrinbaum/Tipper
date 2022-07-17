@@ -7,9 +7,11 @@ const URL = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@c
 
 mongoose.connect(URL, (error, mongoDBInstance) => {
   if (error) throw new Error("MongoDB Connection Error: " + error);
-  if (!process.env.NODE_ENV || process.env.NODE_ENV === "production") {
+  if (!process.env.NODE_ENV) {
     //or = "development"?
     const { host, port, name } = mongoDBInstance;
     console.log({ host, port, name });
   }
 });
+
+// || process.env.NODE_ENV === "production"
