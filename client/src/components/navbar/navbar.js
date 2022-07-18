@@ -2,8 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { MyContext } from "../../context/MyContext";
-// import API from "../../api/user.api";
-import axios from "axios";
+import API from "../../api/user.api";
+
 import logo from "../../assets/logo.png";
 
 const Navbar = () => {
@@ -11,8 +11,8 @@ const Navbar = () => {
 
   const logOut = async () => {
     try {
-      await axios.post(
-        "http://localhost:5050/api/users/logout",
+      await API.post(
+        "/users/logout",
         {},
         {
           headers: {
