@@ -24,7 +24,15 @@ const Homepage = () => {
             </h3>
             <h4>
               Already a member? <NavLink to="/login">Sign in</NavLink>
+              <br></br>
             </h4>
+            <h5 style={{ color: "gray" }}>
+              For example, log in with: <br></br>
+              <span>email:</span>
+              <span style={{ color: "orange" }}>pola@gmail.com </span>
+              <span> password:</span>
+              <span style={{ color: "orange" }}>12341234</span>
+            </h5>
           </div>
           <div className="right-welcome">
             <Signup />

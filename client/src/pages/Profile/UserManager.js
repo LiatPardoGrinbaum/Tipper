@@ -34,7 +34,7 @@ export const UserManager = (props) => {
       <Link to="/user/update">
         <button className="btn">Update my account</button>
       </Link>
-      <button className="btn" style={{ color: "rgb(223, 82, 82)" }} onClick={onHandleDelete}>
+      <button className="btn" style={{ color: "grey" }} onClick={onHandleDelete} disabled>
         Delete my account
       </button>
     </div>
